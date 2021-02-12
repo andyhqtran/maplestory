@@ -1,0 +1,8 @@
+overwrite: true
+schema: ${GRAPHCMS_ENDPOINT}
+generates:
+  src/types/graphcms.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-graphql-request'
