@@ -10,6 +10,7 @@
     "graphql-codegen:dotenv": "graphql-codegen --config graphql-codegen.yml"
   },
   "dependencies": {
+    "@reach/visually-hidden": "^0.13.0",
     "@stitches/react": "0.1.0-canary.3",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",

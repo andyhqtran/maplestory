@@ -134,9 +134,11 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
           </Box>
           <Text>Test</Text>
           <Box as='section'>
-            <Button onClick={() => setRecurrence('daily')}>View daily</Button>
-            <Button onClick={() => setRecurrence('weekly')}>View weekly</Button>
-            <Button onClick={() => setRecurrence('monthly')}>View monthly</Button>
+            <Box css={{ display: 'flex' }}>
+              <Button onClick={() => setRecurrence('daily')}>View daily</Button>
+              <Button onClick={() => setRecurrence('weekly')}>View weekly</Button>
+              <Button onClick={() => setRecurrence('monthly')}>View monthly</Button>
+            </Box>
             <Box css={{ display: 'flex' }}>
               <Box css={{ mr: 24 }}>
                 {filteredBosses?.map((boss) => (
