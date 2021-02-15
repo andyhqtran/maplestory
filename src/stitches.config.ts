@@ -96,3 +96,26 @@ export const stitchesConfig = createCss({
 export type CSS = StitchesCss<typeof stitchesConfig>;
 
 export const { css, styled, global, theme, keyframes, getCssString } = stitchesConfig;
+
+export const darkTheme = theme('dark-theme', {
+  colors: {
+    black: 'hsl(0deg, 0%, 0%)',
+    blue100: 'hsla(216deg, 77%, 45%, 0.04)',
+    blue200: 'hsla(216deg, 77%, 45%, 0.08)',
+    blue300: 'hsla(216deg, 77%, 45%, 0.16)',
+    blue400: 'hsla(216deg, 77%, 45%, 0.24)',
+    blue500: 'hsla(216deg, 77%, 45%, 0.4)',
+    blue600: 'hsla(216deg, 77%, 45%, 0.64)',
+    blue700: 'hsla(216deg, 77%, 45%, 0.84)',
+    blue800: 'hsla(216deg, 77%, 45%, 1)',
+    gray100: 'hsla(0deg, 0%, 100%, 0.04)',
+    gray200: 'hsla(0deg, 0%, 100%, 0.08)',
+    gray300: 'hsla(0deg, 0%, 100%, 0.16)',
+    gray400: 'hsla(0deg, 0%, 100%, 0.24)',
+    gray500: 'hsla(0deg, 0%, 100%, 0.4)',
+    gray600: 'hsla(0deg, 0%, 100%, 0.64)',
+    gray700: 'hsla(0deg, 0%, 100%, 0.84)',
+    gray800: 'hsla(0deg, 0%, 100%, 1)',
+    white: 'hsl(0deg, 0%, 100%)',
+  },
+});
