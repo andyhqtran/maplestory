@@ -16,10 +16,10 @@ export const CharacterCard = ({ css, icon, id, isActive, onDelete, name, ...rest
       css={{
         px: 24,
         py: 16,
-        borderWidth: 2,
+        borderWidth: 4,
         borderStyle: 'solid',
-        borderColor: isActive ? '$black' : 'transparent',
-        /** @todo Fix this after Beta release of `@stitches/react` */
+        borderColor: isActive ? '$blue800' : 'transparent',
+        /** @todo https://github.com/modulz/stitches/issues/375 */
         ...(css as {}),
       }}
       {...restOfProps}

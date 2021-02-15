@@ -3,13 +3,17 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import React, { useMemo, useState } from 'react';
 import { useEffectOnce, useLocalStorage } from 'react-use';
 import { v4 as uuidv4 } from 'uuid';
+import { Box } from '~/components/Box';
+import { Button } from '~/components/Button';
 
 import { CharacterCard } from '~/components/CharacterCard';
 import { Container } from '~/components/Container';
 import { Header } from '~/components/Header';
+import { TaskCard } from '~/components/TaskCard';
 import { Text } from '~/components/Text';
 import { useCharacters } from '~/hooks/useCharacters';
 import { useWeeklies } from '~/hooks/useWeeklies';
+import { darkTheme } from '~/stitches.config';
 import { Boss, Event, Task } from '~/types/graphcms';
 
 export const getStaticProps = async () => {
@@ -18,9 +22,7 @@ export const getStaticProps = async () => {
       bosses {
         id
         image {
-          height
-          url
-          width
+          url(transformation: { image: { resize: { width: 100, height: 100, fit: crop } } })
         }
         name
         recurrence
@@ -100,13 +102,13 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
             Next server reset is in: TIME
           </Text>
 
-          <section>
+          <Box as='section'>
             <Text as='h2' variant='heading-50'>
               Characters
             </Text>
             {isMounted && activeCharacter?.name}
             {isMounted && activeCharacter?.id}
-            <div style={{ display: 'flex' }}>
+            <Box style={{ display: 'flex' }}>
               {isMounted ? (
                 characters?.map((character) => {
                   const isActiveCharacter = activeCharacter?.id === character.id;
@@ -127,37 +129,50 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
               ) : (
                 <>Loading...</>
               )}
-            </div>
-            <button onClick={() => createCharacter(testCharacter)}>Add new character</button>
-          </section>
-
-          <section>
-            <button onClick={() => setRecurrence('daily')}>View daily</button>
-            <button onClick={() => setRecurrence('weekly')}>View weekly</button>
-            <button onClick={() => setRecurrence('monthly')}>View monthly</button>
-            <div style={{ display: 'flex' }}>
-              <div>
+            </Box>
+            <Button onClick={() => createCharacter(testCharacter)}>Add new character</Button>
+          </Box>
+          <Text>Test</Text>
+          <Box as='section'>
+            <Button onClick={() => setRecurrence('daily')}>View daily</Button>
+            <Button onClick={() => setRecurrence('weekly')}>View weekly</Button>
+            <Button onClick={() => setRecurrence('monthly')}>View monthly</Button>
+            <Box css={{ display: 'flex' }}>
+              <Box css={{ mr: 24 }}>
                 {filteredBosses?.map((boss) => (
-                  <div key={boss.id} onClick={() => activeCharacter && onToggleWeekly(boss.name, activeCharacter.id)}>
-                    {isMounted && activeCharacter && weeklies?.[boss.name]?.includes(activeCharacter.id) && (
-                      <>&#10003;</>
-                    )}
-                    {boss.name}
-                  </div>
+                  <TaskCard
+                    {...boss}
+                    css={{ mb: 16 }}
+                    isSelected={isMounted && activeCharacter && weeklies?.[boss.name]?.includes(activeCharacter.id)}
+                    key={boss.id}
+                    onClick={() => activeCharacter && onToggleWeekly(boss.name, activeCharacter.id)}
+                  />
                 ))}
-              </div>
-              <div>
-                {filteredEvents?.map((boss) => (
-                  <div key={boss.id}>{boss.name}</div>
+              </Box>
+              <Box css={{ mr: 24 }}>
+                {filteredEvents?.map((event) => (
+                  <TaskCard
+                    {...event}
+                    css={{ mb: 16 }}
+                    isSelected={isMounted && activeCharacter && weeklies?.[event.name]?.includes(activeCharacter.id)}
+                    key={event.id}
+                    onClick={() => activeCharacter && onToggleWeekly(event.name, activeCharacter.id)}
+                  />
                 ))}
-              </div>
-              <div>
-                {filteredTasks?.map((boss) => (
-                  <div key={boss.id}>{boss.name}</div>
+              </Box>
+              <Box>
+                {filteredTasks?.map((task) => (
+                  <TaskCard
+                    {...task}
+                    css={{ mb: 16 }}
+                    isSelected={isMounted && activeCharacter && weeklies?.[task.name]?.includes(activeCharacter.id)}
+                    key={task.id}
+                    onClick={() => activeCharacter && onToggleWeekly(task.name, activeCharacter.id)}
+                  />
                 ))}
-              </div>
-            </div>
-          </section>
+              </Box>
+            </Box>
+          </Box>
         </Container>
       </main>
       <footer></footer>
