@@ -1,4 +1,4 @@
-import { StitchesProps } from '@stitches/react';
+import { ComponentProps } from 'react';
 
 import { styled } from '~/stitches.config';
 
@@ -11,4 +11,4 @@ export const Container = styled('div', {
   boxSizing: 'border-box',
 });
 
-export type ContainerProps = StitchesProps<typeof Container>;
+export type ContainerProps = ComponentProps<typeof Container>;

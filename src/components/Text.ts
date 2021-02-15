@@ -1,4 +1,5 @@
-import { StitchesProps, StitchesVariants } from '@stitches/react';
+import { StitchesVariants } from '@stitches/react';
+import { ComponentProps } from 'react';
 
 import { styled } from '~/stitches.config';
 
@@ -98,6 +99,6 @@ export const Text = styled('span', {
   },
 });
 
-export type TextProps = StitchesProps<typeof Text>;
+export type TextProps = ComponentProps<typeof Text>;
 
 export type TextVariants = StitchesVariants<typeof Text>;

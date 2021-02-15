@@ -1,4 +1,5 @@
-import { StitchesProps } from '@stitches/react';
+import { ComponentProps } from 'react';
+
 import { styled } from '~/stitches.config';
 
 export const Card = styled('div', {
@@ -8,4 +9,4 @@ export const Card = styled('div', {
   boxSizing: 'border-box',
 });
 
-export type CardProps = StitchesProps<typeof Card>;
+export type CardProps = ComponentProps<typeof Card>;
