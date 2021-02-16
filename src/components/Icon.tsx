@@ -40,6 +40,16 @@ export const MoonIcon = (props: MoonIconProps) => {
   );
 };
 
+export type PencilIconProps = IconProps;
+
+export const PencilIcon = (props: PencilIconProps) => {
+  return (
+    <Icon viewBox='0 0 24 24' {...props}>
+      <path d='M8.707 19.707L18 10.414 13.586 6l-9.293 9.293c-.128.128-.219.289-.263.464L3 21l5.242-1.03C8.418 19.926 8.579 19.835 8.707 19.707zM21 7.414c.781-.781.781-2.047 0-2.828L19.414 3c-.781-.781-2.047-.781-2.828 0L15 4.586 19.414 9 21 7.414z' />
+    </Icon>
+  );
+};
+
 export type SunIconProps = IconProps;
 
 export const SunIcon = (props: SunIconProps) => {
@@ -50,6 +60,16 @@ export const SunIcon = (props: SunIconProps) => {
       <path transform='rotate(-45.001 18.01 5.99)' d='M16.51 4.99H19.511000000000003V6.99H16.51z' />
       <path transform='rotate(-134.983 5.99 5.99)' d='M4.489 4.99H7.489V6.99H4.489z' />
       <path transform='rotate(134.999 18.01 18.01)' d='M17.01 16.51H19.01V19.511000000000003H17.01z' />
+    </Icon>
+  );
+};
+
+export type TrashIconProps = IconProps;
+
+export const TrashIcon = (props: TrashIconProps) => {
+  return (
+    <Icon viewBox='0 0 24 24' {...props}>
+      <path d='M6 7C5.447 7 5 7 5 7v13c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2V7c0 0-.447 0-1 0H6zM10 19H8v-9h2V19zM16 19h-2v-9h2V19zM16.618 4L15 2 9 2 7.382 4 3 4 3 6 8 6 16 6 21 6 21 4z' />
     </Icon>
   );
 };

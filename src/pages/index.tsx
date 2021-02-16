@@ -120,6 +120,9 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
                         event.stopPropagation();
                         !isActiveCharacter && deleteCharacter(character.id);
                       }}
+                      onEdit={(event) => {
+                        event.stopPropagation();
+                      }}
                       key={character.id}
                       {...character}
                     />
@@ -129,7 +132,9 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
                 <>Loading...</>
               )}
             </Box>
-            <Button onClick={() => createCharacter(testCharacter)}>Add new character</Button>
+            <Button onClick={() => createCharacter(testCharacter)} size='large'>
+              Add new character
+            </Button>
           </Box>
           <Box as='section' css={{ mt: 64, mb: 48 }}>
             <Text as='h2' css={{ mb: 24 }} variant='heading-50'>
