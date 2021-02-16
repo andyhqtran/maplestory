@@ -15,9 +15,17 @@ export const Button = styled('button', {
   letterSpacing: -0.2,
   textDecoration: 'none',
   cursor: 'pointer',
+
+  '&:hover': {
+    backgroundColor: '$gray100',
+  },
+
   '&:focus': {
     outline: 'none',
-    boxShadow: '0 0 0 4px $colors$blue800',
+  },
+
+  '&:focus-visible': {
+    boxShadow: '0 0 0 2px $colors$blue800',
   },
 
   variants: {
