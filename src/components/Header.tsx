@@ -24,9 +24,8 @@ export const Header = () => {
         borderColor: '$gray200',
       }}
     >
-      <Container css={{ display: 'flex' }}>
+      <Container css={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Logo />
-        <Box>Back to site</Box>
       </Container>
     </Box>
   );
