@@ -8,6 +8,7 @@ import { Button } from '~/components/Button';
 
 import { CharacterCard } from '~/components/CharacterCard';
 import { Container } from '~/components/Container';
+import { Footer } from '~/components/Footer';
 import { Header } from '~/components/Header';
 import { TaskCard } from '~/components/TaskCard';
 import { Text } from '~/components/Text';
@@ -177,7 +178,7 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
           </Box>
         </Container>
       </main>
-      <footer></footer>
+      <Footer />
     </>
   );
 }
