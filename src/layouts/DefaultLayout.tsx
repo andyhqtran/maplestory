@@ -5,11 +5,11 @@ import { Footer } from '~/components/Footer';
 import { Header } from '~/components/Header';
 import { darkTheme, globalStyles } from '~/stitches.config';
 
-export type DefaultLayout = {
+export type DefaultLayoutProps = {
   children: ReactNode;
 };
 
-export const DefaultLayout = ({ children }) => {
+export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   darkTheme.className;
   globalStyles();
 
