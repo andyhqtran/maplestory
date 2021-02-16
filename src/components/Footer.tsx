@@ -4,6 +4,8 @@ import { Anchor } from '~/components/Anchor';
 
 import { Box } from '~/components/Box';
 import { Container } from '~/components/Container';
+import { MoonIcon, SunIcon } from '~/components/Icon';
+import { IconButton } from '~/components/IconButton';
 import { Text } from '~/components/Text';
 
 export const Footer = () => {
@@ -25,7 +27,7 @@ export const Footer = () => {
           <Text css={{ color: '$gray600' }} variant='body-14'>
             Copyright &copy; Andy Tran
           </Text>
-          <Box>
+          <Box css={{ display: 'flex', alignItems: 'center' }}>
             <Text css={{ mr: 16 }} variant='body-14'>
               <Link href='/credits' passHref>
                 <Anchor css={{ color: '$gray600' }}>Credits</Anchor>
@@ -36,6 +38,9 @@ export const Footer = () => {
                 <Anchor css={{ color: '$gray600' }}>Feedback</Anchor>
               </Link>
             </Text>
+            <IconButton>
+              <SunIcon size='small' />
+            </IconButton>
           </Box>
         </Box>
       </Container>

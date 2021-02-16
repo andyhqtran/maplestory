@@ -2,45 +2,55 @@ import { ComponentProps } from 'react';
 
 import { styled } from '~/stitches.config';
 
-export const Button = styled('button', {
+export const IconButton = styled('button', {
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
   backgroundColor: 'transparent',
   borderWidth: 1,
-  borderStyle: 'solid',
-  borderColor: '$gray200',
-  color: '$gray800',
-  fontFamily: '$inter',
-  fontWeight: '$regular',
-  letterSpacing: -0.2,
+  borderStyle: 'sold',
+  borderColor: 'transparent',
+  color: '$gray500',
   textDecoration: 'none',
   cursor: 'pointer',
+
+  '&:hover': {
+    backgroundColor: '$gray100',
+    color: '$gray800',
+  },
+
+  '&:active': {
+    borderColor: '$gray200',
+  },
+
   '&:focus': {
     outline: 'none',
-    boxShadow: '0 0 0 4px $colors$blue800',
+  },
+
+  '&:focus-visible': {
+    borderColor: 'transparent',
+    boxShadow: '0 0 0 2px $colors$blue800',
+    color: '$gray800',
   },
 
   variants: {
     size: {
       large: {
+        width: 56,
         height: 56,
         borderRadius: 28,
-        paddingLeft: 24,
-        paddingRight: 24,
         fontSize: 18,
       },
       medium: {
+        width: 48,
         height: 48,
         borderRadius: 24,
-        paddingLeft: 24,
-        paddingRight: 24,
         fontSize: 18,
       },
       small: {
+        width: 40,
         height: 40,
         borderRadius: 20,
-        paddingLeft: 20,
-        paddingRight: 20,
         fontSize: 16,
       },
     },
@@ -51,4 +61,4 @@ export const Button = styled('button', {
   },
 });
 
-export type ButtonProps = ComponentProps<typeof Button>;
+export type IconButtonProps = ComponentProps<typeof IconButton>;
