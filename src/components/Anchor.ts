@@ -9,10 +9,16 @@ export const Anchor = styled('a', {
   letterSpacing: 'inherit',
   textDecoration: 'underline',
   cursor: 'pointer',
+
   '&:hover': {
     color: '$blue800',
   },
+
   '&:focus': {
+    outline: 'none',
+  },
+
+  '&:focus-visible': {
     color: '$blue800',
     boxShadow: '0 0 0 2px $colors$blue800',
   },
