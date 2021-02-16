@@ -1,5 +1,7 @@
+import VisuallyHidden from '@reach/visually-hidden';
 import Link from 'next/link';
 import React from 'react';
+import useDarkMode from 'use-dark-mode';
 import { Anchor } from '~/components/Anchor';
 
 import { Box } from '~/components/Box';
@@ -9,6 +11,8 @@ import { IconButton } from '~/components/IconButton';
 import { Text } from '~/components/Text';
 
 export const Footer = () => {
+  const darkMode = useDarkMode(true);
+
   return (
     <Box as='footer' css={{ my: 96 }}>
       <Container>
@@ -38,8 +42,10 @@ export const Footer = () => {
                 <Anchor css={{ color: '$gray600' }}>Feedback</Anchor>
               </Link>
             </Text>
-            <IconButton>
-              <SunIcon size='small' />
+            <IconButton onClick={darkMode.toggle}>
+              <VisuallyHidden>Switch between dark and light mode</VisuallyHidden>
+              <SunIcon css={{ '.light-mode &': { display: 'none' } }} size='small' />
+              <MoonIcon css={{ '.dark-mode &': { display: 'none' } }} size='small' />
             </IconButton>
           </Box>
         </Box>

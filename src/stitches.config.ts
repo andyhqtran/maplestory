@@ -6,6 +6,7 @@ export const stitchesConfig = createCss({
   prefix: '',
   theme: {
     colors: {
+      background: 'hsla(0deg, 0%, 100%, 1)',
       black: 'hsl(0deg, 0%, 0%)',
       blue100: 'hsla(216deg, 77%, 45%, 0.04)',
       blue200: 'hsla(216deg, 77%, 45%, 0.08)',
@@ -97,8 +98,15 @@ export type CSS = StitchesCss<typeof stitchesConfig>;
 
 export const { css, styled, global, theme, keyframes, getCssString } = stitchesConfig;
 
-export const darkTheme = theme('dark-theme', {
+export const globalStyles = global({
+  body: {
+    backgroundColor: '$background',
+  },
+});
+
+export const darkTheme = theme('dark-mode', {
   colors: {
+    background: 'hsla(213deg, 22%, 8%, 1)',
     black: 'hsl(0deg, 0%, 0%)',
     blue100: 'hsla(216deg, 77%, 45%, 0.04)',
     blue200: 'hsla(216deg, 77%, 45%, 0.08)',

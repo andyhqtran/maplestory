@@ -7,9 +7,7 @@ type MyAppProps = AppProps & {
 };
 
 const MyApp = ({ Component, pageProps }: MyAppProps) => {
-  const Layout =
-    Component.layout ??
-    ((props: { children: ReactNode }) => <>{props.children}</>);
+  const Layout = Component.layout ?? ((props: { children: ReactNode }) => <>{props.children}</>);
 
   return (
     <Layout {...pageProps}>

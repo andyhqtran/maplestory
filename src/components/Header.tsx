@@ -15,7 +15,7 @@ export const Header = () => {
         left: 0,
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: '$white',
+        backgroundColor: '$background',
         width: '100%',
         height: 88,
         border: 0,
