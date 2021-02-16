@@ -96,26 +96,24 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
       <Header />
       <main>
         <Container>
-          <Text as='h1' css={{ mb: 16 }} variant='heading-70'>
+          <Text as='h1' css={{ mt: 40, mb: 16 }} variant='heading-70'>
             MapleStory Tracker
           </Text>
-          <Text as='p' variant='body-24'>
-            Next server reset is in: TIME
+          <Text as='p' css={{ color: '$gray600' }} variant='body-24'>
+            A tool to help keep track of all your recurring MapleStory tasks.
           </Text>
 
-          <Box as='section'>
-            <Text as='h2' variant='heading-50'>
+          <Box as='section' css={{ mt: 64, mb: 48 }}>
+            <Text as='h2' css={{ mb: 24 }} variant='heading-50'>
               Characters
             </Text>
-            {isMounted && activeCharacter?.name}
-            {isMounted && activeCharacter?.id}
-            <Box style={{ display: 'flex' }}>
+            <Box css={{ display: 'flex', mb: 24 }}>
               {isMounted ? (
                 characters?.map((character) => {
                   const isActiveCharacter = activeCharacter?.id === character.id;
                   return (
                     <CharacterCard
-                      css={{ mr: 12 }}
+                      css={{ mr: 24 }}
                       isActive={isActiveCharacter}
                       onClick={() => setActiveCharacter(character)}
                       onDelete={(event) => {
@@ -133,9 +131,11 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
             </Box>
             <Button onClick={() => createCharacter(testCharacter)}>Add new character</Button>
           </Box>
-          <Text>Test</Text>
-          <Box as='section'>
-            <Box css={{ display: 'flex' }}>
+          <Box as='section' css={{ mt: 64, mb: 48 }}>
+            <Text as='h2' css={{ mb: 24 }} variant='heading-50'>
+              Tasks
+            </Text>
+            <Box css={{ display: 'flex', mb: 24 }}>
               <Button onClick={() => setRecurrence('daily')}>View daily</Button>
               <Button onClick={() => setRecurrence('weekly')}>View weekly</Button>
               <Button onClick={() => setRecurrence('monthly')}>View monthly</Button>
