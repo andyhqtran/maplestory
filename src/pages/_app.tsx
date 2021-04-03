@@ -1,4 +1,5 @@
 import { NextComponentType } from 'next';
+import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import React, { ReactNode } from 'react';
 
@@ -11,6 +12,11 @@ const MyApp = ({ Component, pageProps }: MyAppProps) => {
 
   return (
     <Layout {...pageProps}>
+      <DefaultSeo
+        description='A tool to help keep track of all your recurring MapleStory tasks.'
+        title='Home'
+        titleTemplate='%s | MapleStory Tracker'
+      />
       <Component {...pageProps} />
     </Layout>
   );

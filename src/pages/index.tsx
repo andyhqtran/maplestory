@@ -30,7 +30,7 @@ export const getStaticProps = async () => {
         id
         image {
           height
-          url
+          url(transformation: { image: { resize: { width: 100, height: 100, fit: crop } } })
           width
         }
         name
@@ -40,7 +40,8 @@ export const getStaticProps = async () => {
         id
         image {
           height
-          url
+          name
+          url(transformation: { image: { resize: { width: 100, height: 100, fit: crop } } })
           width
         }
         name
