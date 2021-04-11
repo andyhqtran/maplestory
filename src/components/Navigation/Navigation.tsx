@@ -3,11 +3,11 @@ import { useTheme } from 'next-themes';
 import React from 'react';
 
 import { Box } from '~/components/Box';
-import { CheckSquareIcon, MoonIcon, MusicIcon, SunIcon } from '~/components/Icon';
+import { CheckSquareIcon, IdCardIcon, MoonIcon, MusicIcon, SunIcon } from '~/components/Icon';
 import { IconButton } from '~/components/IconButton';
 import { Logo } from '~/components/Logo';
 import { NavigationItem } from '~/components/Navigation/NavigationItem';
-import { ROUTES } from '~/constants/routes';
+import { Routes } from '~/constants/routes';
 
 export const Navigation = () => {
   const { theme, setTheme } = useTheme();
@@ -28,9 +28,11 @@ export const Navigation = () => {
     >
       <Box>
         <Logo css={{ mb: 24 }} />
-        <NavigationItem href={ROUTES.tracker} icon={CheckSquareIcon} label='Daily tracker' />
-        <NavigationItem href={ROUTES.music} icon={MusicIcon} label='Music' />
+        <NavigationItem href={Routes.Tracker} icon={CheckSquareIcon} label='Daily tracker' />
+        <NavigationItem href={Routes.Characters} icon={IdCardIcon} label='Characters' />
+        <NavigationItem href={Routes.Music} icon={MusicIcon} label='Music' />
       </Box>
+
       <Box>
         <IconButton onClick={() => (isDarkMode ? setTheme('light') : setTheme('dark'))} size='small'>
           <VisuallyHidden>Switch between dark and light mode</VisuallyHidden>

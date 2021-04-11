@@ -2,8 +2,8 @@ import React from 'react';
 
 import { DefaultLayout } from '~/layouts/DefaultLayout';
 
-export default function CharactersPage() {
+export default function MusicPage() {
   return <>Coming soon</>;
 }
 
-CharactersPage.layout = DefaultLayout;
+MusicPage.layout = DefaultLayout;

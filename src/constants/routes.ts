@@ -1,6 +1,7 @@
-export const ROUTES = {
-  feedback: 'https://github.com/andyhqtran/maplestory/discussions/categories/ideas',
-  music: '/music',
-  root: '/',
-  tracker: '/',
-};
+export enum Routes {
+  Feedback = 'https://github.com/andyhqtran/maplestory/discussions/categories/ideas',
+  Characters = '/characters',
+  Music = '/music',
+  Root = '/',
+  Tracker = '/',
+}
