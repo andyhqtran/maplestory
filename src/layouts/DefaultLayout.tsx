@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { ActiveCharacterCard } from '~/components/ActiveCharacterCard';
 
 import { Box } from '~/components/Box';
 import { CharacterList } from '~/components/CharacterList/CharacterList';
@@ -27,6 +28,7 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
 
         <Sidebar>
           <CharacterList />
+          <ActiveCharacterCard />
         </Sidebar>
 
         <Box as='main' css={{ overflowY: 'auto' }}>

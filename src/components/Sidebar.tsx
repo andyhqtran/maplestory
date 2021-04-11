@@ -8,7 +8,15 @@ export const Sidebar = ({ css, ...restOfProps }: SidebarProps) => {
   return (
     <Box
       as='aside'
-      css={{ backgroundColor: '$background', borderRight: '1px solid $colors$gray200', p: 24, ...(css as {}) }}
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        backgroundColor: '$background',
+        borderRight: '1px solid $colors$gray200',
+        p: 24,
+        ...(css as {}),
+      }}
       {...restOfProps}
     />
   );
