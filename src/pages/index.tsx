@@ -7,6 +7,8 @@ import { Button } from '~/components/Button';
 
 import { Container } from '~/components/Container';
 import { Header } from '~/components/Header';
+import { Tabs } from '~/components/Tabs/Tabs';
+import { TabsItem } from '~/components/Tabs/TabsItem';
 import { TaskCard } from '~/components/TaskCard';
 import { Text } from '~/components/Text';
 import { useWeeklies } from '~/hooks/useWeeklies';
@@ -21,6 +23,7 @@ export const getStaticProps = async () => {
         image {
           url(transformation: { image: { resize: { width: 100, height: 100, fit: crop } } })
         }
+        mesos
         name
         recurrence
       }
@@ -49,7 +52,7 @@ export const getStaticProps = async () => {
   `;
 
   const data: {
-    bosses: Pick<Boss, 'id' | 'image' | 'name' | 'recurrence'>[];
+    bosses: Pick<Boss, 'id' | 'image' | 'mesos' | 'name' | 'recurrence'>[];
     events: Pick<Event, 'id' | 'image' | 'name' | 'recurrence'>[];
     tasks: Pick<Task, 'id' | 'image' | 'name' | 'recurrence'>[];
   } = await request('https://api-us-west-2.graphcms.com/v2/ckkd8kujwo19i01z51x2dc4n2/master', query);
@@ -67,6 +70,7 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
   const [recurrence, setRecurrence] = useState('daily');
   const { weeklies, onToggleWeekly } = useWeeklies();
 
+  console.log(bosses);
   useEffectOnce(() => {
     setIsMounted(true);
 
@@ -96,29 +100,52 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
         </Text>
       </Header>
       <Container>
-        <Box as='section' css={{ mt: 64, mb: 48 }}>
-          <Text as='h2' css={{ mb: 24 }} size='heading-50'>
+        <Box as='section' css={{ my: 48 }}>
+          <Text as='h3' css={{ mb: 12 }} size='heading-12-uppercase'>
+            Recurrence filter
+          </Text>
+          <Tabs css={{ mb: 24 }}>
+            <TabsItem isSelected={recurrence === 'daily'} onClick={() => setRecurrence('daily')}>
+              Daily
+            </TabsItem>
+            <TabsItem isSelected={recurrence === 'weekly'} onClick={() => setRecurrence('weekly')}>
+              Weekly
+            </TabsItem>
+            <TabsItem isSelected={recurrence === 'monthly'} onClick={() => setRecurrence('monthly')}>
+              Monthly
+            </TabsItem>
+          </Tabs>
+
+          <Text as='h3' css={{ mb: 12 }} size='heading-12-uppercase'>
             Tasks
           </Text>
-          <Box css={{ display: 'flex', mb: 24 }}>
-            <Button onClick={() => setRecurrence('daily')}>View daily</Button>
-            <Button onClick={() => setRecurrence('weekly')}>View weekly</Button>
-            <Button onClick={() => setRecurrence('monthly')}>View monthly</Button>
-          </Box>
           <Box css={{ display: 'flex' }}>
-            <Box css={{ mr: 24 }}>
+            <Box css={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: 24, mr: 24 }}>
               {filteredBosses?.map((boss) => (
-                <TaskCard {...boss} css={{ mb: 16 }} key={boss.id} />
+                <TaskCard
+                  {...boss}
+                  description={boss?.mesos && `${boss?.mesos?.toLocaleString()} mesos`}
+                  key={boss.id}
+                />
               ))}
             </Box>
-            <Box css={{ mr: 24 }}>
-              {filteredEvents?.map((event) => (
-                <TaskCard {...event} css={{ mb: 16 }} key={event.id} />
-              ))}
-            </Box>
-            <Box>
+            <Box
+              css={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gridGap: 24,
+                alignContent: 'start',
+                alignItems: 'start',
+                mr: 24,
+              }}
+            >
               {filteredTasks?.map((task) => (
-                <TaskCard {...task} css={{ mb: 16 }} key={task.id} />
+                <TaskCard {...task} key={task.id} />
+              ))}
+            </Box>
+            <Box css={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: 24, mr: 24 }}>
+              {filteredEvents?.map((event) => (
+                <TaskCard {...event} key={event.id} />
               ))}
             </Box>
           </Box>

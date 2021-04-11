@@ -1,12 +1,14 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Box } from '~/components/Box';
+import { Button, ButtonProps } from '~/components/Button';
 
 import { Card, CardProps } from '~/components/Card';
 import { Text } from '~/components/Text';
 import { Boss, Event, Task } from '~/types/graphcms';
 
-export type TaskCardProps = CardProps & {
+export type TaskCardProps = Omit<ButtonProps, 'size'> & {
+  description?: ReactNode;
   id: Boss['id'] | Event['id'] | Task['id'];
   image: {
     url: string;
@@ -15,32 +17,42 @@ export type TaskCardProps = CardProps & {
   name: Boss['name'] | Event['name'] | Task['name'];
 };
 
-export const TaskCard = ({ css, id, image, isSelected, name, ...restOfProps }: TaskCardProps) => {
+export const TaskCard = ({ css, description, id, image, isSelected, name, ...restOfProps }: TaskCardProps) => {
   return (
-    <Card
+    <Button
       css={{
-        display: 'flex',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
+        backgroundColor: '$gray100',
+        height: 'auto',
+        border: 0,
         px: 16,
-        py: 16,
-        cursor: 'pointer',
+        py: 12,
+        textAlign: 'left',
         opacity: isSelected ? 0.32 : 1,
+
         '&:hover': {
           backgroundColor: '$gray200',
         },
-        /** @todo https://github.com/modulz/stitches/issues/375 */
+
         ...(css as {}),
       }}
       {...restOfProps}
     >
       {image && (
-        <Box css={{ mr: 8 }}>
-          <Image height={32} src={image.url} width={32} />
+        <Box css={{ mr: 16, pointerEvents: 'none' }}>
+          <Image height={40} src={image.url} width={40} />
         </Box>
       )}
-      <Text as='h3' size='heading-16'>
-        {name}
-      </Text>
-    </Card>
+      <Box>
+        <Text as='h3' size='heading-14'>
+          {name}
+        </Text>
+        {description && (
+          <Text as='p' css={{ color: '$gray600' }} size='body-12'>
+            {description}
+          </Text>
+        )}
+      </Box>
+    </Button>
   );
 };
