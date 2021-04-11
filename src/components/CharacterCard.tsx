@@ -28,38 +28,33 @@ export const CharacterCard = ({
   return (
     <Card
       css={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        minWidth: 200,
-        px: 12,
-        py: 12,
-        borderWidth: 4,
-        borderStyle: 'solid',
-        borderColor: isActive ? '$blue800' : 'transparent',
+        minWidth: 320,
+        p: 12,
+        boxShadow: `0 0 0 4px ${isActive ? '$colors$blue800' : 'transparent'}`,
         cursor: 'pointer',
         /** @todo https://github.com/modulz/stitches/issues/375 */
         ...(css as {}),
       }}
       {...restOfProps}
     >
-      {/** @todo Add images by @drawwithkristi */}
-      <Box css={{ backgroundColor: '$gray700', width: '100%', height: 160, mb: 12, borderRadius: 12 }} />
+      <Box css={{ display: 'flex', alignItems: 'center', mb: 12 }}>
+        <Box css={{ backgroundColor: '$gray100', width: 64, height: 64, borderRadius: 8, mr: 16 }} />
 
-      <Text as='h3' css={{ mb: 4 }} variant='heading-24'>
-        {name}
+        <Box>
+          <Text as='h3' css={{ mb: 4 }} size='heading-20'>
+            {name}
+          </Text>
+          <Text css={{ color: '$gray600' }} size='body-14'>
+            Last updated 2 hours ago
+          </Text>
+        </Box>
+      </Box>
+
+      <Text as='h4' css={{ mb: 8 }} size='heading-12-uppercase'>
+        Completion status
       </Text>
-
-      {/** @todo Add IconButton for character actions */}
-      <Box css={{ display: 'flex' }}>
-        <IconButton onClick={onEdit}>
-          <VisuallyHidden>Edit {name}</VisuallyHidden>
-          <PencilIcon size='small' />
-        </IconButton>
-        <IconButton onClick={onDelete}>
-          <VisuallyHidden>Delete {name}</VisuallyHidden>
-          <TrashIcon size='small' />
-        </IconButton>
+      <Box css={{ backgroundColor: '$gray100', borderRadius: 12, overflow: 'hidden' }}>
+        <Box css={{ backgroundColor: '$blue800', width: '50%', height: 12, borderRadius: 12 }} />
       </Box>
     </Card>
   );

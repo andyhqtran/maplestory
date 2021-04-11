@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 
 import { Box } from '~/components/Box';
-import { Footer } from '~/components/Footer';
-import { Header } from '~/components/Header';
+import { Navigation } from '~/components/Navigation/Navigation';
+import { SecondaryNavigation } from '~/components/SecondaryNavigation/SecondaryNavigation';
 import { darkTheme, globalStyles } from '~/stitches.config';
 
 export type DefaultLayoutProps = {
@@ -14,10 +14,20 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   globalStyles();
 
   return (
-    <>
-      <Header />
-      <Box as='main'>{children}</Box>
-      <Footer />
-    </>
+    <Box
+      css={{
+        display: 'grid',
+        gridTemplateColumns: '64px 240px 1fr',
+        height: '100%',
+      }}
+    >
+      <Navigation />
+
+      <SecondaryNavigation />
+
+      <Box as='main' css={{ overflowY: 'auto' }}>
+        {children}
+      </Box>
+    </Box>
   );
 };

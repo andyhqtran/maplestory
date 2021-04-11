@@ -10,36 +10,42 @@ export const Text = styled('span', {
   fontFamily: '$inter',
 
   variants: {
-    variant: {
+    size: {
       'heading-70': {
         fontSize: 70,
         fontWeight: '$black',
         letterSpacing: -2,
-        lineHeight: '76px',
+        lineHeight: 1.1,
       },
       'heading-50': {
         fontSize: 50,
         fontWeight: '$black',
         letterSpacing: -1,
-        lineHeight: '52px',
+        lineHeight: 1.1,
       },
       'heading-32': {
         fontSize: 32,
         fontWeight: '$black',
         letterSpacing: -1,
-        lineHeight: '40px',
+        lineHeight: 1.1,
       },
       'heading-24': {
         fontSize: 24,
         fontWeight: '$bold',
         letterSpacing: -0.3,
-        lineHeight: '40px',
+        lineHeight: 1.1,
+      },
+      'heading-20': {
+        fontSize: 20,
+        fontWeight: '$bold',
+        letterSpacing: -0.3,
+        lineHeight: 1.1,
       },
       'heading-16': {
         fontSize: 16,
         fontWeight: '$bold',
         letterSpacing: -0.3,
-        lineHeight: '24px',
+        lineHeight: 1.1,
       },
       'heading-14': {
         fontSize: 14,
@@ -91,11 +97,17 @@ export const Text = styled('span', {
         fontWeight: '$regular',
         lineHeight: '22px',
       },
+      'body-12': {
+        fontSize: 12,
+        letterSpacing: 0,
+        fontWeight: '$regular',
+        lineHeight: '18px',
+      },
     },
   },
 
   defaultVariants: {
-    variant: 'body-18',
+    size: 'body-18',
   },
 });
 

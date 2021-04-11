@@ -37,7 +37,6 @@ export const stitchesConfig = createCss({
       regular: '400',
     },
   },
-  conditions: {},
   utils: {
     m: () => (value) => ({
       marginTop: value,
@@ -99,8 +98,17 @@ export type CSS = StitchesCss<typeof stitchesConfig>;
 export const { css, styled, global, theme, keyframes, getCssString } = stitchesConfig;
 
 export const globalStyles = global({
+  html: {
+    height: '100%',
+  },
   body: {
     backgroundColor: '$background',
+    height: '100%',
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
+  },
+  '#__next': {
+    height: '100%',
   },
 });
 

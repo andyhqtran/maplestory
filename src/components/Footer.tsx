@@ -28,16 +28,16 @@ export const Footer = () => {
             borderColor: '$gray200',
           }}
         >
-          <Text css={{ color: '$gray600' }} variant='body-14'>
+          <Text css={{ color: '$gray600' }} size='body-14'>
             Copyright &copy; Andy Tran
           </Text>
           <Box css={{ display: 'flex', alignItems: 'center' }}>
-            <Text css={{ mr: 16 }} variant='body-14'>
+            <Text css={{ mr: 16 }} size='body-14'>
               <Link href='/credits' passHref>
                 <Anchor css={{ color: '$gray600' }}>Credits</Anchor>
               </Link>
             </Text>
-            <Text css={{ mr: 16 }} variant='body-14'>
+            <Text css={{ mr: 16 }} size='body-14'>
               <Link href='https://github.com/andyhqtran/maplestory/discussions' passHref>
                 <Anchor css={{ color: '$gray600' }}>Feedback</Anchor>
               </Link>

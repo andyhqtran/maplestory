@@ -38,7 +38,7 @@ export const TaskCard = ({ css, id, image, isSelected, name, ...restOfProps }: T
           <Image height={32} src={image.url} width={32} />
         </Box>
       )}
-      <Text as='h3' variant='heading-16'>
+      <Text as='h3' size='heading-16'>
         {name}
       </Text>
     </Card>

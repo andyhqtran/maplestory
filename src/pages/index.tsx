@@ -7,7 +7,9 @@ import { Box } from '~/components/Box';
 import { Button } from '~/components/Button';
 
 import { CharacterCard } from '~/components/CharacterCard';
+import { CharacterList } from '~/components/CharacterList';
 import { Container } from '~/components/Container';
+import { Header } from '~/components/Header';
 import { TaskCard } from '~/components/TaskCard';
 import { Text } from '~/components/Text';
 import { useCharacters } from '~/hooks/useCharacters';
@@ -88,96 +90,66 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
     return tasks.filter((task) => task.recurrence.toLowerCase() === recurrence);
   }, [tasks, recurrence]);
 
-  const testCharacter = { name: 'Character', icon: ' IconName', id: uuidv4() };
-
   return (
-    <Container>
-      <Text as='h1' css={{ mt: 40, mb: 16 }} variant='heading-70'>
-        MapleStory Tracker
-      </Text>
-      <Text as='p' css={{ color: '$gray600' }} variant='body-24'>
-        A tool to help keep track of all your recurring MapleStory tasks.
-      </Text>
+    <>
+      <Header>
+        <Text as='h1' css={{ mr: 8, color: '$gray800' }} size='heading-12-uppercase'>
+          Tracker
+        </Text>
+        <Text as='p' css={{ color: '$gray600' }} size='body-12'>
+          A tool to help keep track of all your recurring MapleStory tasks.
+        </Text>
+      </Header>
+      <Container>
+        <CharacterList />
 
-      <Box as='section' css={{ mt: 64, mb: 48 }}>
-        <Text as='h2' css={{ mb: 24 }} variant='heading-50'>
-          Characters
-        </Text>
-        <Box css={{ display: 'flex', mb: 24 }}>
-          {isMounted ? (
-            characters?.map((character) => {
-              const isActiveCharacter = activeCharacter?.id === character.id;
-              return (
-                <CharacterCard
-                  css={{ mr: 24 }}
-                  isActive={isActiveCharacter}
-                  onClick={() => setActiveCharacter(character)}
-                  onDelete={(event) => {
-                    event.stopPropagation();
-                    !isActiveCharacter && deleteCharacter(character.id);
-                  }}
-                  onEdit={(event) => {
-                    event.stopPropagation();
-                  }}
-                  key={character.id}
-                  {...character}
+        <Box as='section' css={{ mt: 64, mb: 48 }}>
+          <Text as='h2' css={{ mb: 24 }} size='heading-50'>
+            Tasks
+          </Text>
+          <Box css={{ display: 'flex', mb: 24 }}>
+            <Button onClick={() => setRecurrence('daily')}>View daily</Button>
+            <Button onClick={() => setRecurrence('weekly')}>View weekly</Button>
+            <Button onClick={() => setRecurrence('monthly')}>View monthly</Button>
+          </Box>
+          <Box css={{ display: 'flex' }}>
+            <Box css={{ mr: 24 }}>
+              {filteredBosses?.map((boss) => (
+                <TaskCard
+                  {...boss}
+                  css={{ mb: 16 }}
+                  isSelected={isMounted && activeCharacter && weeklies?.[boss.name]?.includes(activeCharacter.id)}
+                  key={boss.id}
+                  onClick={() => activeCharacter && onToggleWeekly(boss.name, activeCharacter.id)}
                 />
-              );
-            })
-          ) : (
-            <>Loading...</>
-          )}
-        </Box>
-        <Button onClick={() => createCharacter(testCharacter)} size='large'>
-          Add new character
-        </Button>
-      </Box>
-      <Box as='section' css={{ mt: 64, mb: 48 }}>
-        <Text as='h2' css={{ mb: 24 }} variant='heading-50'>
-          Tasks
-        </Text>
-        <Box css={{ display: 'flex', mb: 24 }}>
-          <Button onClick={() => setRecurrence('daily')}>View daily</Button>
-          <Button onClick={() => setRecurrence('weekly')}>View weekly</Button>
-          <Button onClick={() => setRecurrence('monthly')}>View monthly</Button>
-        </Box>
-        <Box css={{ display: 'flex' }}>
-          <Box css={{ mr: 24 }}>
-            {filteredBosses?.map((boss) => (
-              <TaskCard
-                {...boss}
-                css={{ mb: 16 }}
-                isSelected={isMounted && activeCharacter && weeklies?.[boss.name]?.includes(activeCharacter.id)}
-                key={boss.id}
-                onClick={() => activeCharacter && onToggleWeekly(boss.name, activeCharacter.id)}
-              />
-            ))}
-          </Box>
-          <Box css={{ mr: 24 }}>
-            {filteredEvents?.map((event) => (
-              <TaskCard
-                {...event}
-                css={{ mb: 16 }}
-                isSelected={isMounted && activeCharacter && weeklies?.[event.name]?.includes(activeCharacter.id)}
-                key={event.id}
-                onClick={() => activeCharacter && onToggleWeekly(event.name, activeCharacter.id)}
-              />
-            ))}
-          </Box>
-          <Box>
-            {filteredTasks?.map((task) => (
-              <TaskCard
-                {...task}
-                css={{ mb: 16 }}
-                isSelected={isMounted && activeCharacter && weeklies?.[task.name]?.includes(activeCharacter.id)}
-                key={task.id}
-                onClick={() => activeCharacter && onToggleWeekly(task.name, activeCharacter.id)}
-              />
-            ))}
+              ))}
+            </Box>
+            <Box css={{ mr: 24 }}>
+              {filteredEvents?.map((event) => (
+                <TaskCard
+                  {...event}
+                  css={{ mb: 16 }}
+                  isSelected={isMounted && activeCharacter && weeklies?.[event.name]?.includes(activeCharacter.id)}
+                  key={event.id}
+                  onClick={() => activeCharacter && onToggleWeekly(event.name, activeCharacter.id)}
+                />
+              ))}
+            </Box>
+            <Box>
+              {filteredTasks?.map((task) => (
+                <TaskCard
+                  {...task}
+                  css={{ mb: 16 }}
+                  isSelected={isMounted && activeCharacter && weeklies?.[task.name]?.includes(activeCharacter.id)}
+                  key={task.id}
+                  onClick={() => activeCharacter && onToggleWeekly(task.name, activeCharacter.id)}
+                />
+              ))}
+            </Box>
           </Box>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </>
   );
 }
 

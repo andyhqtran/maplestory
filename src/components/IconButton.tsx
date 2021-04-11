@@ -53,6 +53,12 @@ export const IconButton = styled('button', {
         borderRadius: 20,
         fontSize: 16,
       },
+      ['extra-small']: {
+        width: 32,
+        height: 32,
+        borderRadius: 20,
+        fontSize: 14,
+      },
     },
   },
 

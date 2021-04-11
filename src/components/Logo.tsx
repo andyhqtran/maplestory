@@ -2,22 +2,28 @@ import VisuallyHidden from '@reach/visually-hidden';
 import Link from 'next/link';
 import React from 'react';
 
-import { Box } from '~/components/Box';
+import { Box, BoxProps } from '~/components/Box';
 
-export const Logo = () => {
+export type LogoProps = BoxProps;
+
+export const Logo = ({ css }: LogoProps) => {
   return (
     <Link href='/' passHref>
       <Box
         as='a'
         css={{
+          display: 'block',
           backgroundColor: '$gray100',
-          width: 56,
-          height: 56,
-          borderRadius: 28,
+          width: 40,
+          height: 40,
+          borderRadius: 20,
           cursor: 'pointer',
+
           '&:hover': {
             backgroundColor: '$gray200',
           },
+
+          ...(css as {}),
         }}
       >
         <VisuallyHidden>MapleStory Tracker</VisuallyHidden>

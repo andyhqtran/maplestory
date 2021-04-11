@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Box } from '~/components/Box';
+import { Box, BoxProps } from '~/components/Box';
 import { Container } from '~/components/Container';
-import { Logo } from '~/components/Logo';
 
-export const Header = () => {
+export type HeaderProps = BoxProps;
+
+export const Header = ({ children, css, ...restOfProps }: HeaderProps) => {
   return (
     <Box
       as='header'
@@ -17,16 +18,16 @@ export const Header = () => {
         alignItems: 'center',
         backgroundColor: '$background',
         width: '100%',
-        height: 88,
+        height: 64,
         border: 0,
         borderBottomWidth: 1,
         borderStyle: 'solid',
-        borderColor: '$gray200',
+        borderColor: '$gray100',
+        ...(css as {}),
       }}
+      {...restOfProps}
     >
-      <Container css={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Logo />
-      </Container>
+      <Container css={{ display: 'flex', alignItems: 'center' }}>{children}</Container>
     </Box>
   );
 };
