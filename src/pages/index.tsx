@@ -9,7 +9,6 @@ import { Container } from '~/components/Container';
 import { Header } from '~/components/Header';
 import { TaskCard } from '~/components/TaskCard';
 import { Text } from '~/components/Text';
-import { useCharacters } from '~/hooks/useCharacters';
 import { useWeeklies } from '~/hooks/useWeeklies';
 import { DefaultLayout } from '~/layouts/DefaultLayout';
 import { Boss, Event, Task } from '~/types/graphcms';
@@ -66,7 +65,6 @@ export const getStaticProps = async () => {
 export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [isMounted, setIsMounted] = useState(false);
   const [recurrence, setRecurrence] = useState('daily');
-  const { activeCharacter, characters, createCharacter, deleteCharacter, setActiveCharacter } = useCharacters();
   const { weeklies, onToggleWeekly } = useWeeklies();
 
   useEffectOnce(() => {
@@ -110,35 +108,17 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
           <Box css={{ display: 'flex' }}>
             <Box css={{ mr: 24 }}>
               {filteredBosses?.map((boss) => (
-                <TaskCard
-                  {...boss}
-                  css={{ mb: 16 }}
-                  isSelected={isMounted && activeCharacter && weeklies?.[boss.name]?.includes(activeCharacter.id)}
-                  key={boss.id}
-                  onClick={() => activeCharacter && onToggleWeekly(boss.name, activeCharacter.id)}
-                />
+                <TaskCard {...boss} css={{ mb: 16 }} key={boss.id} />
               ))}
             </Box>
             <Box css={{ mr: 24 }}>
               {filteredEvents?.map((event) => (
-                <TaskCard
-                  {...event}
-                  css={{ mb: 16 }}
-                  isSelected={isMounted && activeCharacter && weeklies?.[event.name]?.includes(activeCharacter.id)}
-                  key={event.id}
-                  onClick={() => activeCharacter && onToggleWeekly(event.name, activeCharacter.id)}
-                />
+                <TaskCard {...event} css={{ mb: 16 }} key={event.id} />
               ))}
             </Box>
             <Box>
               {filteredTasks?.map((task) => (
-                <TaskCard
-                  {...task}
-                  css={{ mb: 16 }}
-                  isSelected={isMounted && activeCharacter && weeklies?.[task.name]?.includes(activeCharacter.id)}
-                  key={task.id}
-                  onClick={() => activeCharacter && onToggleWeekly(task.name, activeCharacter.id)}
-                />
+                <TaskCard {...task} css={{ mb: 16 }} key={task.id} />
               ))}
             </Box>
           </Box>
