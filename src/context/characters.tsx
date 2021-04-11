@@ -33,10 +33,13 @@ type CharactersActions =
   | { type: CharactersActionType.Update; character: Character };
 
 enum ActiveCharacterActionType {
+  Fetch = 'ACTIVE_CARD_FETCH',
   Update = 'ACTIVE_CARD_UPDATE',
 }
 
-type ActiveCharacterActions = { type: ActiveCharacterActionType.Update; id: Character['id'] };
+type ActiveCharacterActions =
+  | { type: ActiveCharacterActionType.Fetch; character?: Character }
+  | { type: ActiveCharacterActionType.Update; id: Character['id'] };
 
 const initialState: State = {
   characters: [],
@@ -53,6 +56,11 @@ const reducer = (
   action: CharactersActions | ActiveCharacterActions,
 ) => {
   switch (action.type) {
+    case ActiveCharacterActionType.Fetch:
+      return {
+        ...state,
+        activeCharacter: action.character,
+      };
     case ActiveCharacterActionType.Update:
       const character = state.characters.find((character) => character.id === action.id);
 
@@ -109,6 +117,7 @@ export const CharactersProvider = ({ children }: { children: ReactNode }) => {
   // }, []);
 
   useEffect(() => {
+    dispatch({ type: ActiveCharacterActionType.Fetch, character: activeCharacter });
     dispatch({ type: CharactersActionType.Fetch, characters });
   }, []);
 
