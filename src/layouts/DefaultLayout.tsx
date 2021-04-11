@@ -5,7 +5,7 @@ import { CharacterList } from '~/components/CharacterList/CharacterList';
 import { Navigation } from '~/components/Navigation/Navigation';
 import { Sidebar } from '~/components/Sidebar';
 import { CharactersProvider } from '~/context/characters';
-import { darkTheme, globalStyles } from '~/stitches.config';
+import { globalStyles } from '~/stitches.config';
 
 export type DefaultLayoutProps = {
   children: ReactNode;
