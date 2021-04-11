@@ -112,7 +112,7 @@ export const globalStyles = global({
   },
 });
 
-export const darkTheme = theme('dark-mode', {
+export const darkTheme = theme('dark-theme', {
   colors: {
     background: 'hsla(213deg, 22%, 8%, 1)',
     black: 'hsl(0deg, 0%, 0%)',

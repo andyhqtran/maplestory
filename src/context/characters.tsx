@@ -79,16 +79,16 @@ export const CharactersProvider = ({ children }: { children: ReactNode }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    setCharacters([
-      {
-        avatar: 'test',
-        class: 'Buccaneer',
-        id: 'test-id',
-        name: 'Obsu',
-      },
-    ]);
-  }, []);
+  // useEffect(() => {
+  //   setCharacters([
+  //     {
+  //       avatar: 'test',
+  //       class: 'Buccaneer',
+  //       id: 'test-id',
+  //       name: 'Obsu',
+  //     },
+  //   ]);
+  // }, []);
 
   useEffect(() => {
     dispatch({ type: ActionType.Fetch, characters });

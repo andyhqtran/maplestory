@@ -12,7 +12,6 @@ export type DefaultLayoutProps = {
 };
 
 export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
-  darkTheme.className;
   globalStyles();
 
   return (

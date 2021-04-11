@@ -1,6 +1,6 @@
 import VisuallyHidden from '@reach/visually-hidden';
+import { useTheme } from 'next-themes';
 import React from 'react';
-import useDarkMode from 'use-dark-mode';
 
 import { Box } from '~/components/Box';
 import { CheckSquareIcon, MoonIcon, MusicIcon, SunIcon } from '~/components/Icon';
@@ -10,7 +10,8 @@ import { NavigationItem } from '~/components/Navigation/NavigationItem';
 import { ROUTES } from '~/constants/routes';
 
 export const Navigation = () => {
-  const darkMode = useDarkMode(true);
+  const { theme, setTheme } = useTheme();
+  const isDarkMode = theme === 'dark';
 
   return (
     <Box
@@ -31,10 +32,10 @@ export const Navigation = () => {
         <NavigationItem href={ROUTES.music} icon={MusicIcon} label='Music' />
       </Box>
       <Box>
-        <IconButton onClick={darkMode.toggle} size='small'>
+        <IconButton onClick={() => (isDarkMode ? setTheme('light') : setTheme('dark'))} size='small'>
           <VisuallyHidden>Switch between dark and light mode</VisuallyHidden>
-          <SunIcon css={{ '.light-mode &': { display: 'none' } }} size='small' />
-          <MoonIcon css={{ '.dark-mode &': { display: 'none' } }} size='small' />
+          <SunIcon css={{ '.light-theme &': { display: 'none' } }} size='small' />
+          <MoonIcon css={{ '.dark-theme &': { display: 'none' } }} size='small' />
         </IconButton>
       </Box>
     </Box>

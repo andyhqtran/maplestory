@@ -20,11 +20,6 @@ export const CharacterList = () => {
       })}
       <Button
         onClick={() => {
-          // create({
-          //   avatar: 'testest-idt',
-          //   class: 'Buccaneer',
-          //   name: 'Obsu',
-          // });
           updateCharacter({
             avatar: '',
             id: 'test-id',
@@ -43,10 +38,6 @@ export const CharacterList = () => {
             class: 'Buccaneer',
             name: 'Obsu',
           });
-          // updateCharacter('test-id', {
-          //   name: 'Obsu-2',
-          //   class: 'Buccaneer',
-          // });
         }}
         size='small'
       >
