@@ -11,54 +11,71 @@ type Character = {
 };
 
 type State = {
+  activeCharacter?: Character;
   characters: Character[];
   createCharacter: (character: Omit<Character, 'id'>) => void;
   deleteCharacter: (id: Character['id']) => void;
+  updateActiveCharacter: (id: Character['id']) => void;
   updateCharacter: (character: Character) => void;
 };
 
-enum ActionType {
-  Create = 'CREATE',
-  Delete = 'DELETE',
-  Fetch = 'FETCH',
-  Update = 'UPDATED',
+enum CharactersActionType {
+  Create = 'CHARACTERS_CREATE',
+  Delete = 'CHARACTERS_DELETE',
+  Fetch = 'CHARACTERS_FETCH',
+  Update = 'CHARACTERS_UPDATE',
 }
 
-type Action =
-  | { type: ActionType.Create; character: Character }
-  | { type: ActionType.Delete; id: string }
-  | { type: ActionType.Fetch; characters: Character[] }
-  | { type: ActionType.Update; character: Character };
+type CharactersActions =
+  | { type: CharactersActionType.Create; character: Character }
+  | { type: CharactersActionType.Delete; id: Character['id'] }
+  | { type: CharactersActionType.Fetch; characters: Character[] }
+  | { type: CharactersActionType.Update; character: Character };
 
-export const CharactersContext = createContext<State>({
+enum ActiveCharacterActionType {
+  Update = 'ACTIVE_CARD_UPDATE',
+}
+
+type ActiveCharacterActions = { type: ActiveCharacterActionType.Update; id: Character['id'] };
+
+const initialState: State = {
   characters: [],
   createCharacter: noop,
   deleteCharacter: noop,
+  updateActiveCharacter: noop,
   updateCharacter: noop,
-});
-
-const initialState: Omit<State, 'createCharacter' | 'deleteCharacter' | 'updateCharacter'> = {
-  characters: [],
 };
 
-const reducer = (state: Omit<State, 'createCharacter' | 'deleteCharacter' | 'updateCharacter'>, action: Action) => {
+export const CharactersContext = createContext(initialState);
+
+const reducer = (
+  state: Omit<State, 'createCharacter' | 'deleteCharacter' | 'updateCharacter'>,
+  action: CharactersActions | ActiveCharacterActions,
+) => {
   switch (action.type) {
-    case ActionType.Create:
+    case ActiveCharacterActionType.Update:
+      const character = state.characters.find((character) => character.id === action.id);
+
+      return {
+        ...state,
+        activeCharacter: character,
+      };
+    case CharactersActionType.Create:
       return {
         ...state,
         characters: [...state.characters, action.character],
       };
-    case ActionType.Delete:
+    case CharactersActionType.Delete:
       return {
         ...state,
         characters: state.characters.filter((character) => character.id === action.id),
       };
-    case ActionType.Fetch:
+    case CharactersActionType.Fetch:
       return {
         ...state,
         characters: action.characters,
       };
-    case ActionType.Update:
+    case CharactersActionType.Update:
       const characterIndex = state.characters.findIndex((character) => character.id === action.character.id);
 
       return {
@@ -75,6 +92,7 @@ const reducer = (state: Omit<State, 'createCharacter' | 'deleteCharacter' | 'upd
 };
 
 export const CharactersProvider = ({ children }: { children: ReactNode }) => {
+  const [activeCharacter, setActiveCharacter] = useLocalStorageState<Character | undefined>('active-character');
   const [characters, setCharacters] = useLocalStorageState<Character[]>('characters', []);
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -91,7 +109,7 @@ export const CharactersProvider = ({ children }: { children: ReactNode }) => {
   // }, []);
 
   useEffect(() => {
-    dispatch({ type: ActionType.Fetch, characters });
+    dispatch({ type: CharactersActionType.Fetch, characters });
   }, []);
 
   const createCharacter = (character: Omit<Character, 'id'>) => {
@@ -100,22 +118,30 @@ export const CharactersProvider = ({ children }: { children: ReactNode }) => {
       ...character,
     };
 
-    dispatch({ type: ActionType.Create, character: newCharacter });
+    dispatch({ type: CharactersActionType.Create, character: newCharacter });
 
     setCharacters([...(characters ?? []), newCharacter]);
   };
 
   const deleteCharacter = (id: Character['id']) => {
-    dispatch({ type: ActionType.Delete, id });
+    dispatch({ type: CharactersActionType.Delete, id });
 
     setCharacters(characters.filter((character) => character.id !== id));
   };
 
   const updateCharacter = (character: Character) => {
-    dispatch({ type: ActionType.Update, character });
+    dispatch({ type: CharactersActionType.Update, character });
     const characterIndex = characters.findIndex((currentCharacter) => currentCharacter.id === character.id);
 
     setCharacters([...characters.slice(0, characterIndex), character, ...state.characters.slice(characterIndex + 1)]);
+  };
+
+  const updateActiveCharacter = (id: Character['id']) => {
+    dispatch({ type: ActiveCharacterActionType.Update, id });
+
+    const character = characters.find((character) => character.id === id);
+
+    setActiveCharacter(character);
   };
 
   return (
@@ -124,6 +150,7 @@ export const CharactersProvider = ({ children }: { children: ReactNode }) => {
         ...state,
         createCharacter,
         deleteCharacter,
+        updateActiveCharacter,
         updateCharacter,
       }}
     >

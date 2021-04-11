@@ -1,48 +1,44 @@
 import React from 'react';
-import { useLocalStorage } from 'react-use';
 
 import { Box } from '~/components/Box';
-import { Button } from '~/components/Button';
 import { CharacterListItem } from '~/components/CharacterList/CharacterListItem';
+import { PlusIcon } from '~/components/Icon';
+import { IconButton } from '~/components/IconButton';
 import { Text } from '~/components/Text';
 import { useCharacters } from '~/hooks/useCharacters';
 
 export const CharacterList = () => {
-  const { characters, createCharacter, updateCharacter } = useCharacters();
+  const { activeCharacter, characters, createCharacter, updateActiveCharacter } = useCharacters();
 
   return (
     <Box as='nav' css={{ display: 'flex', flexDirection: 'column', justifyContent: 'stretch' }}>
-      <Text as='h2' css={{ mb: 12, color: '$gray800' }} size='heading-12-uppercase'>
-        Characters
-      </Text>
+      <Box as='header' css={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 12 }}>
+        <Text as='h2' css={{ color: '$gray800' }} size='heading-12-uppercase'>
+          Characters
+        </Text>
+        <IconButton
+          onClick={() => {
+            createCharacter({
+              avatar: 'test-id',
+              class: 'Buccaneer',
+              name: 'Obsu',
+            });
+          }}
+          size='micro'
+        >
+          <PlusIcon size='micro' />
+        </IconButton>
+      </Box>
       {characters.map((character) => {
-        return <CharacterListItem key={character.id} name={character.name} />;
+        return (
+          <CharacterListItem
+            key={character.id}
+            name={character.name}
+            isSelected={activeCharacter?.id === character.id}
+            onClick={() => updateActiveCharacter(character.id)}
+          />
+        );
       })}
-      <Button
-        onClick={() => {
-          updateCharacter({
-            avatar: '',
-            id: 'test-id',
-            name: 'Obsu-2',
-            class: 'Buccaneer',
-          });
-        }}
-        size='small'
-      >
-        Update character
-      </Button>
-      <Button
-        onClick={() => {
-          createCharacter({
-            avatar: 'test-id',
-            class: 'Buccaneer',
-            name: 'Obsu',
-          });
-        }}
-        size='small'
-      >
-        Create character
-      </Button>
     </Box>
   );
 };
