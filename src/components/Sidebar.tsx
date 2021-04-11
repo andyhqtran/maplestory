@@ -15,6 +15,7 @@ export const Sidebar = ({ css, ...restOfProps }: SidebarProps) => {
         backgroundColor: '$background',
         borderRight: '1px solid $colors$gray200',
         p: 24,
+        overflowY: 'auto',
         ...(css as {}),
       }}
       {...restOfProps}

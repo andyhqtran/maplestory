@@ -1,11 +1,13 @@
 import React from 'react';
-import { Box } from '~/components/Box';
-import { Card } from '~/components/Card';
-import { Text } from '~/components/Text';
 
+import { Box } from '~/components/Box';
+import { Card, CardProps } from '~/components/Card';
+import { Text } from '~/components/Text';
 import { useCharacters } from '~/hooks/useCharacters';
 
-export const ActiveCharacterCard = () => {
+export type ActiveCharacterCardProps = CardProps;
+
+export const ActiveCharacterCard = ({ css, ...restOfProps }: ActiveCharacterCardProps) => {
   const { activeCharacter } = useCharacters();
 
   if (!activeCharacter) return null;
@@ -20,6 +22,7 @@ export const ActiveCharacterCard = () => {
         justifySelf: 'flex-end',
         mx: -12,
         p: 12,
+        ...(css as {}),
       }}
     >
       <Box css={{ backgroundColor: '$background', width: '100%', height: 120, borderRadius: 4, mb: 12 }} />

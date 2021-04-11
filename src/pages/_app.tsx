@@ -3,6 +3,8 @@ import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import React, { ReactNode } from 'react';
+import { ToastProvider } from 'react-toast-notifications';
+import { Toast } from '~/components/Toast';
 
 import { darkTheme } from '~/stitches.config';
 
@@ -20,14 +22,16 @@ const MyApp = ({ Component, pageProps }: MyAppProps) => {
       value={{ dark: darkTheme.className, light: 'light-theme' }}
       defaultTheme='system'
     >
-      <Layout {...pageProps}>
-        <DefaultSeo
-          description='A tool to help keep track of all your recurring MapleStory tasks.'
-          title='Home'
-          titleTemplate='%s | MapleStory Tracker'
-        />
-        <Component {...pageProps} />
-      </Layout>
+      <ToastProvider autoDismiss autoDismissTimeout={6000} components={{ Toast }} placement='bottom-center'>
+        <Layout {...pageProps}>
+          <DefaultSeo
+            description='A tool to help keep track of all your recurring MapleStory tasks.'
+            title='Home'
+            titleTemplate='%s | MapleStory Tracker'
+          />
+          <Component {...pageProps} />
+        </Layout>
+      </ToastProvider>
     </ThemeProvider>
   );
 };

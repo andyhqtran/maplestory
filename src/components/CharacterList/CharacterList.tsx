@@ -1,4 +1,5 @@
 import React from 'react';
+import { useToasts } from 'react-toast-notifications';
 
 import { Box } from '~/components/Box';
 import { CharacterListItem } from '~/components/CharacterList/CharacterListItem';
@@ -9,6 +10,7 @@ import { useCharacters } from '~/hooks/useCharacters';
 
 export const CharacterList = () => {
   const { activeCharacter, characters, createCharacter, updateActiveCharacter } = useCharacters();
+  const { addToast } = useToasts();
 
   return (
     <Box as='nav' css={{ display: 'flex', flexDirection: 'column', justifyContent: 'stretch' }}>
@@ -18,6 +20,7 @@ export const CharacterList = () => {
         </Text>
         <IconButton
           onClick={() => {
+            addToast('Successfully created character', { appearance: 'success' });
             createCharacter({
               avatar: 'test-id',
               class: 'Buccaneer',
