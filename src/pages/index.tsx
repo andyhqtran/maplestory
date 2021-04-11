@@ -1,13 +1,10 @@
 import { gql, request } from 'graphql-request';
 import { InferGetStaticPropsType } from 'next';
 import React, { useMemo, useState } from 'react';
-import { useEffectOnce, useLocalStorage } from 'react-use';
-import { v4 as uuidv4 } from 'uuid';
+import { useEffectOnce } from 'react-use';
 import { Box } from '~/components/Box';
 import { Button } from '~/components/Button';
 
-import { CharacterCard } from '~/components/CharacterCard';
-import { CharacterList } from '~/components/CharacterList';
 import { Container } from '~/components/Container';
 import { Header } from '~/components/Header';
 import { TaskCard } from '~/components/TaskCard';
@@ -101,8 +98,6 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
         </Text>
       </Header>
       <Container>
-        <CharacterList />
-
         <Box as='section' css={{ mt: 64, mb: 48 }}>
           <Text as='h2' css={{ mb: 24 }} size='heading-50'>
             Tasks

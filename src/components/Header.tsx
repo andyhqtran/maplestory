@@ -22,7 +22,7 @@ export const Header = ({ children, css, ...restOfProps }: HeaderProps) => {
         border: 0,
         borderBottomWidth: 1,
         borderStyle: 'solid',
-        borderColor: '$gray100',
+        borderColor: '$gray200',
         ...(css as {}),
       }}
       {...restOfProps}

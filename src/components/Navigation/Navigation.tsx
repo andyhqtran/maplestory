@@ -22,7 +22,7 @@ export const Navigation = () => {
         justifyContent: 'space-between',
         backgroundColor: '$background',
         py: 24,
-        borderRight: '1px solid $colors$gray100',
+        borderRight: '1px solid $colors$gray200',
       }}
     >
       <Box>

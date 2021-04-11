@@ -10,7 +10,7 @@ export const IconButton = styled('button', {
   borderWidth: 1,
   borderStyle: 'sold',
   borderColor: 'transparent',
-  color: '$gray500',
+  color: '$gray600',
   textDecoration: 'none',
   cursor: 'pointer',
 

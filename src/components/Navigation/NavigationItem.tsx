@@ -22,7 +22,7 @@ export const NavigationItem = ({ href = '/', icon, label }: NavigationItemProps)
         as='a'
         css={{
           borderRadius: 4,
-          color: isActiveRoute ? '$gray800' : undefined,
+          color: isActiveRoute ? '$gray800' : '$gray600',
           mb: 8,
           transition: 'color 0.2s ease',
 
