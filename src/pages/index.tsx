@@ -7,6 +7,7 @@ import { ActiveCharacterCard } from '~/components/ActiveCharacterCard';
 import { Box } from '~/components/Box';
 import { CharacterList } from '~/components/CharacterList/CharacterList';
 import { Container } from '~/components/Container';
+import { CountdownBanner } from '~/components/CountdownBanner';
 import { Header } from '~/components/Header';
 import { Tabs } from '~/components/Tabs/Tabs';
 import { TabsItem } from '~/components/Tabs/TabsItem';
@@ -108,6 +109,7 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
       </Header>
       <Container>
         <Box as='section' css={{ my: 48 }}>
+          <CountdownBanner css={{ mb: 24 }} />
           <Text as='h3' css={{ mb: 12 }} size='heading-12-uppercase'>
             Recurrence filter
           </Text>
