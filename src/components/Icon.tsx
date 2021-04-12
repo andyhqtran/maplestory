@@ -38,6 +38,25 @@ export const Icon = styled('svg', {
 
 export type IconProps = ComponentProps<typeof Icon>;
 
+export type ArrowToLeftIconProps = IconProps;
+
+export const ArrowToLeftIcon = (props: ArrowToLeftIconProps) => {
+  return (
+    <Icon viewBox='0 0 24 24' {...props}>
+      <path d='M4 6H6V18H4zM14.293 5.293L7.586 12 14.293 18.707 15.707 17.293 11.414 13 20 13 20 11 11.414 11 15.707 6.707z' />
+    </Icon>
+  );
+};
+export type ArrowToRightIconProps = IconProps;
+
+export const ArrowToRightIcon = (props: ArrowToLeftIconProps) => {
+  return (
+    <Icon viewBox='0 0 24 24' {...props}>
+      <path d='M4 6H6V18H4zM14 11L8 11 8 13 14 13 14 18 20 12 14 6z' />{' '}
+    </Icon>
+  );
+};
+
 export type BugIconProps = IconProps;
 
 export const BugIcon = (props: BugIconProps) => {

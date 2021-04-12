@@ -3,14 +3,28 @@ import { useTheme } from 'next-themes';
 import React from 'react';
 
 import { Box } from '~/components/Box';
-import { CheckSquareIcon, IdCardIcon, MoonIcon, MusicIcon, SunIcon } from '~/components/Icon';
+import {
+  ArrowToLeftIcon,
+  ArrowToRightIcon,
+  CheckSquareIcon,
+  IdCardIcon,
+  MoonIcon,
+  MusicIcon,
+  SunIcon,
+} from '~/components/Icon';
 import { IconButton } from '~/components/IconButton';
 import { Logo } from '~/components/Logo';
 import { NavigationItem } from '~/components/Navigation/NavigationItem';
 import { Routes } from '~/constants/routes';
+import { useSidebar } from '~/hooks/useSidebar';
 
-export const Navigation = () => {
+export type NavigationProps = {
+  hasSidebar?: boolean;
+};
+
+export const Navigation = ({ hasSidebar = false }) => {
   const { theme, setTheme } = useTheme();
+  const { isSidebarOpened, toggleSidebar } = useSidebar();
   const isDarkMode = theme === 'dark';
 
   return (
@@ -34,6 +48,11 @@ export const Navigation = () => {
       </Box>
 
       <Box>
+        {hasSidebar && (
+          <IconButton css={{ mb: 8 }} onClick={toggleSidebar} size='small'>
+            {isSidebarOpened ? <ArrowToLeftIcon size='small' /> : <ArrowToRightIcon size='small' />}
+          </IconButton>
+        )}
         <IconButton onClick={() => (isDarkMode ? setTheme('light') : setTheme('dark'))} size='small'>
           <VisuallyHidden>Switch between dark and light mode</VisuallyHidden>
           <SunIcon css={{ '.light-theme &': { display: 'none' } }} size='small' />

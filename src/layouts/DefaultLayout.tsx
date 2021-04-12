@@ -1,40 +1,35 @@
 import React, { ReactNode } from 'react';
-import { ActiveCharacterCard } from '~/components/ActiveCharacterCard';
 
 import { Box } from '~/components/Box';
-import { CharacterList } from '~/components/CharacterList/CharacterList';
 import { Navigation } from '~/components/Navigation/Navigation';
 import { Sidebar } from '~/components/Sidebar';
-import { CharactersProvider } from '~/context/characters';
 import { globalStyles } from '~/stitches.config';
+import { useSidebar } from '../hooks/useSidebar';
 
 export type DefaultLayoutProps = {
   children: ReactNode;
+  sidebar?: ReactNode;
 };
 
-export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+export const DefaultLayout = ({ sidebar, children }: DefaultLayoutProps) => {
+  const { isSidebarOpened } = useSidebar();
   globalStyles();
 
   return (
-    <CharactersProvider>
-      <Box
-        css={{
-          display: 'grid',
-          gridTemplateColumns: '64px 240px 1fr',
-          height: '100%',
-        }}
-      >
-        <Navigation />
+    <Box
+      css={{
+        display: 'grid',
+        gridTemplateColumns: sidebar && isSidebarOpened ? '64px 240px 1fr' : '64px 1fr',
+        height: '100%',
+      }}
+    >
+      <Navigation hasSidebar={!!sidebar} />
 
-        <Sidebar>
-          <CharacterList />
-          <ActiveCharacterCard />
-        </Sidebar>
+      {sidebar && isSidebarOpened && <Sidebar>{sidebar}</Sidebar>}
 
-        <Box as='main' css={{ overflowY: 'auto' }}>
-          {children}
-        </Box>
+      <Box as='main' css={{ overflowY: 'auto' }}>
+        {children}
       </Box>
-    </CharactersProvider>
+    </Box>
   );
 };

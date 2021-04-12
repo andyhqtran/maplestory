@@ -2,9 +2,10 @@ import { gql, request } from 'graphql-request';
 import { InferGetStaticPropsType } from 'next';
 import React, { useMemo, useState } from 'react';
 import { useEffectOnce } from 'react-use';
-import { Box } from '~/components/Box';
-import { Button } from '~/components/Button';
 
+import { ActiveCharacterCard } from '~/components/ActiveCharacterCard';
+import { Box } from '~/components/Box';
+import { CharacterList } from '~/components/CharacterList/CharacterList';
 import { Container } from '~/components/Container';
 import { Header } from '~/components/Header';
 import { Tabs } from '~/components/Tabs/Tabs';
@@ -70,7 +71,6 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
   const [recurrence, setRecurrence] = useState('daily');
   const { weeklies, onToggleWeekly } = useWeeklies();
 
-  console.log(bosses);
   useEffectOnce(() => {
     setIsMounted(true);
 
@@ -90,7 +90,14 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
   }, [tasks, recurrence]);
 
   return (
-    <>
+    <DefaultLayout
+      sidebar={
+        <>
+          <CharacterList />
+          <ActiveCharacterCard />
+        </>
+      }
+    >
       <Header>
         <Text as='h1' css={{ mr: 8, color: '$gray800' }} size='heading-12-uppercase'>
           Tracker
@@ -151,8 +158,6 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
           </Box>
         </Box>
       </Container>
-    </>
+    </DefaultLayout>
   );
 }
-
-HomePage.layout = DefaultLayout;
