@@ -35,6 +35,7 @@ export const CharacterList = () => {
       {characters.map((character) => {
         return (
           <CharacterListItem
+            id={character.id}
             key={character.id}
             name={character.name}
             isSelected={activeCharacter?.id === character.id}

@@ -76,7 +76,7 @@ const reducer = (
     case CharactersActionType.Delete:
       return {
         ...state,
-        characters: state.characters.filter((character) => character.id === action.id),
+        characters: state.characters.filter((character) => character.id !== action.id),
       };
     case CharactersActionType.Fetch:
       return {

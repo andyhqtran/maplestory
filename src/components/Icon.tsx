@@ -88,6 +88,16 @@ export const DataIcon = (props: DataIconProps) => {
   );
 };
 
+export type DotsVerticalIconProps = IconProps;
+
+export const DotsVerticalIcon = (props: DotsVerticalIconProps) => {
+  return (
+    <Icon viewBox='0 0 24 24' {...props}>
+      <path d='M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 10 12 10zM12 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 4 12 4zM12 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2S13.1 16 12 16z' />
+    </Icon>
+  );
+};
+
 export type ExportIconProps = IconProps;
 
 export const ExportIcon = (props: ExportIconProps) => {

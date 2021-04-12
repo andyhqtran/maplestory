@@ -1,13 +1,14 @@
+import '@reach/menu-button/styles.css';
 import { NextComponentType } from 'next';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import React, { ReactNode } from 'react';
 import { ToastProvider } from 'react-toast-notifications';
+
 import { Toast } from '~/components/Toast';
 import { CharactersProvider } from '~/context/characters';
 import { SidebarProvider } from '~/context/sidebar';
-
 import { darkTheme } from '~/stitches.config';
 
 type MyAppProps = AppProps & {
