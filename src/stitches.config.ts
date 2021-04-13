@@ -139,6 +139,17 @@ export const globalStyles = global({
       backgroundColor: '$gray100',
     },
   },
+
+  '[data-reach-dialog-overlay]': {
+    zIndex: 9999,
+  },
+
+  '[data-reach-dialog-content]': {
+    backgroundColor: '$background',
+    border: '1px solid $colors$gray200',
+    borderRadius: 4,
+    boxShadow: '0 2px 8px $colors$gray100',
+  },
 });
 
 export const darkTheme = theme('dark-theme', {

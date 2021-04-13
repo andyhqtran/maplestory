@@ -2,10 +2,11 @@ import { noop } from 'lodash';
 import React, { createContext, ReactNode, useEffect, useReducer } from 'react';
 import useLocalStorageState from 'use-local-storage-state';
 import { v4 as uuidv4 } from 'uuid';
+import { MSClass } from '~/constants/maplestory';
 
 type Character = {
   avatar: string;
-  class: string;
+  class: keyof typeof MSClass;
   id: string;
   name: string;
 };

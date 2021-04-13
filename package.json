@@ -10,10 +10,12 @@
     "graphql-codegen:dotenv": "graphql-codegen --config graphql-codegen.yml"
   },
   "dependencies": {
+    "@reach/dialog": "^0.15.0",
     "@reach/menu-button": "^0.15.0",
     "@reach/tooltip": "^0.15.0",
     "@reach/visually-hidden": "^0.15.0",
     "@stitches/react": "0.1.5",
+    "formik": "^2.2.6",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
     "lodash": "^4.17.21",

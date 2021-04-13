@@ -1,14 +1,21 @@
-import React from 'react';
+import Dialog, { DialogOverlay } from '@reach/dialog';
+import { Field, Form, Formik } from 'formik';
+import React, { useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
 
 import { Box } from '~/components/Box';
+import { Button } from '~/components/Button';
 import { CharacterListItem } from '~/components/CharacterList/CharacterListItem';
+import { CreateCharacterForm } from '~/components/Form/CreateCharacterForm';
 import { PlusIcon } from '~/components/Icon';
 import { IconButton } from '~/components/IconButton';
+import { Input } from '~/components/Input';
 import { Text } from '~/components/Text';
+import { MSClass } from '~/constants/maplestory';
 import { useCharacters } from '~/hooks/useCharacters';
 
 export const CharacterList = () => {
+  const [isDialogOpened, setIsDialogOpened] = useState(false);
   const { activeCharacter, characters, createCharacter, updateActiveCharacter } = useCharacters();
   const { addToast } = useToasts();
 
@@ -20,12 +27,7 @@ export const CharacterList = () => {
         </Text>
         <IconButton
           onClick={() => {
-            addToast('Successfully created character', { appearance: 'success' });
-            createCharacter({
-              avatar: 'test-id',
-              class: 'Buccaneer',
-              name: 'Obsu',
-            });
+            setIsDialogOpened(true);
           }}
           size='micro'
         >
@@ -43,6 +45,15 @@ export const CharacterList = () => {
           />
         );
       })}
+
+      <DialogOverlay isOpen={isDialogOpened}>
+        <Dialog aria-label='Character creation' onDismiss={() => setIsDialogOpened(false)}>
+          <Text as='h1' css={{ mb: 12 }} size='heading-20'>
+            Character creation
+          </Text>
+          <CreateCharacterForm onSubmit={() => setIsDialogOpened(false)} />
+        </Dialog>
+      </DialogOverlay>
     </Box>
   );
 };

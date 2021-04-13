@@ -3,6 +3,7 @@ import React from 'react';
 import { Box } from '~/components/Box';
 import { Card, CardProps } from '~/components/Card';
 import { Text } from '~/components/Text';
+import { MSClass } from '~/constants/maplestory';
 import { useCharacters } from '~/hooks/useCharacters';
 
 export type ActiveCharacterCardProps = CardProps;
@@ -24,10 +25,11 @@ export const ActiveCharacterCard = ({ css, ...restOfProps }: ActiveCharacterCard
         p: 12,
         ...(css as {}),
       }}
+      {...restOfProps}
     >
       <Box css={{ backgroundColor: '$background', width: '100%', height: 120, borderRadius: 4, mb: 12 }} />
       <Text size='heading-14'>{activeCharacter.name}</Text>
-      <Text size='body-12'>{activeCharacter.class}</Text>
+      <Text size='body-12'>{MSClass[activeCharacter.class]}</Text>
     </Card>
   );
 };

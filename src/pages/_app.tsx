@@ -1,3 +1,4 @@
+import '@reach/dialog/styles.css';
 import '@reach/menu-button/styles.css';
 import { NextComponentType } from 'next';
 import { DefaultSeo } from 'next-seo';

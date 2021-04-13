@@ -15,6 +15,7 @@ export const Toast = ({ children, css, onDismiss = noop, ...restOfProps }: Toast
       css={{
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         maxWidth: 400,
         backgroundColor: '$background',
         border: '1px solid $colors$gray200',
