@@ -1,23 +1,19 @@
 import { Menu, MenuButton, MenuButtonProps, MenuItem, MenuList } from '@reach/menu-button';
 import React, { FunctionComponent } from 'react';
-import { useToasts } from 'react-toast-notifications';
 
 import { Button, ButtonProps } from '~/components/Button';
 import { DotsVerticalIcon } from '~/components/Icon';
 import { IconButton } from '~/components/IconButton';
 import { Text } from '~/components/Text';
-import { useCharacters } from '~/hooks/useCharacters';
 
 export type CharacterListItemProps = ButtonProps & {
   id: string;
   isSelected?: boolean;
   name: string;
+  onDelete?: () => void;
 };
 
-export const CharacterListItem = ({ css, id, isSelected, name, ...restOfProps }: CharacterListItemProps) => {
-  const { deleteCharacter } = useCharacters();
-  const { addToast } = useToasts();
-
+export const CharacterListItem = ({ css, id, isSelected, name, onDelete, ...restOfProps }: CharacterListItemProps) => {
   return (
     <Button
       css={{
@@ -63,14 +59,7 @@ export const CharacterListItem = ({ css, id, isSelected, name, ...restOfProps }:
             </IconButton>
             <MenuList>
               <MenuItem onSelect={() => console.log('update')}>Update</MenuItem>
-              <MenuItem
-                onSelect={() => {
-                  deleteCharacter(id);
-                  addToast(`Successfully deleted ${name}`);
-                }}
-              >
-                Delete
-              </MenuItem>
+              {onDelete && <MenuItem onSelect={onDelete}>Delete</MenuItem>}
             </MenuList>
           </>
         )}

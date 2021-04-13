@@ -16,7 +16,7 @@ import { IconButton } from '~/components/IconButton';
 import { Logo } from '~/components/Logo';
 import { NavigationItem } from '~/components/Navigation/NavigationItem';
 import { Routes } from '~/constants/routes';
-import { useSidebar } from '~/hooks/useSidebar';
+import { useSettings } from '~/hooks/useSettings';
 
 export type NavigationProps = {
   hasSidebar?: boolean;
@@ -24,7 +24,8 @@ export type NavigationProps = {
 
 export const Navigation = ({ hasSidebar = false }) => {
   const { theme, setTheme } = useTheme();
-  const { isSidebarOpened, toggleSidebar } = useSidebar();
+  const { getSettingStatus, updateSetting } = useSettings();
+  const isSidebarOpened = getSettingStatus('sidebar');
   const isDarkMode = theme === 'dark';
 
   return (
@@ -49,7 +50,7 @@ export const Navigation = ({ hasSidebar = false }) => {
 
       <Box>
         {hasSidebar && (
-          <IconButton css={{ mb: 8 }} onClick={toggleSidebar} size='small'>
+          <IconButton css={{ mb: 8 }} onClick={() => updateSetting('sidebar', !isSidebarOpened)} size='small'>
             {isSidebarOpened ? <ArrowToLeftIcon size='small' /> : <ArrowToRightIcon size='small' />}
           </IconButton>
         )}

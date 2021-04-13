@@ -8,8 +8,6 @@ import React, { ReactNode } from 'react';
 import { ToastProvider } from 'react-toast-notifications';
 
 import { Toast } from '~/components/Toast';
-import { CharactersProvider } from '~/context/characters';
-import { SidebarProvider } from '~/context/sidebar';
 import { darkTheme } from '~/stitches.config';
 
 type MyAppProps = AppProps & {
@@ -27,18 +25,14 @@ const MyApp = ({ Component, pageProps }: MyAppProps) => {
       defaultTheme='system'
     >
       <ToastProvider autoDismiss autoDismissTimeout={6000} components={{ Toast }} placement='bottom-center'>
-        <SidebarProvider>
-          <CharactersProvider>
-            <Layout {...pageProps}>
-              <DefaultSeo
-                description='A tool to help keep track of all your recurring MapleStory tasks.'
-                title='Home'
-                titleTemplate='%s | MapleStory Tracker'
-              />
-              <Component {...pageProps} />
-            </Layout>
-          </CharactersProvider>
-        </SidebarProvider>
+        <Layout {...pageProps}>
+          <DefaultSeo
+            description='A tool to help keep track of all your recurring MapleStory tasks.'
+            title='Home'
+            titleTemplate='%s | MapleStory Tracker'
+          />
+          <Component {...pageProps} />
+        </Layout>
       </ToastProvider>
     </ThemeProvider>
   );

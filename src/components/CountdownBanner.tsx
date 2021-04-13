@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Countdown from 'react-countdown';
 
 import { Box, BoxProps } from '~/components/Box';
@@ -10,6 +10,9 @@ export type CountdownBannerProps = BoxProps;
 
 export const CountdownBanner = ({ css, ...restOfProps }: CountdownBannerProps) => {
   const { nextResetTime } = useServerResetTime();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => setIsMounted(true), []);
 
   return (
     <Box
@@ -27,14 +30,16 @@ export const CountdownBanner = ({ css, ...restOfProps }: CountdownBannerProps) =
       <TimerIcon css={{ mr: 12 }} size='small' />
       <Text size='body-14'>Next server reset in</Text>
       &nbsp;
-      <Countdown
-        date={nextResetTime}
-        renderer={({ hours, minutes, seconds }) => (
-          <Text as='time' dateTime={`PT${hours}H${minutes}M${seconds}S`} size='body-14'>
-            {hours}h {minutes}m {seconds}s
-          </Text>
-        )}
-      />
+      {isMounted && (
+        <Countdown
+          date={nextResetTime}
+          renderer={({ hours, minutes, seconds }) => (
+            <Text as='time' dateTime={`PT${hours}H${minutes}M${seconds}S`} size='body-14'>
+              {hours}h {minutes}m {seconds}s
+            </Text>
+          )}
+        />
+      )}
     </Box>
   );
 };
