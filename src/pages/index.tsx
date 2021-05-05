@@ -11,7 +11,7 @@ import { CountdownBanner } from '~/components/CountdownBanner';
 import { Header } from '~/components/Header';
 import { Tabs } from '~/components/Primitives/Tabs/Tabs';
 import { TabsItem } from '~/components/Primitives/Tabs/TabsItem';
-import { TaskCard } from '~/components/TaskCard';
+import { TasksCard } from '~/components/Tasks/TasksCard';
 import { Text } from '~/components/Primitives/Text';
 import { useWeeklies } from '~/hooks/useWeeklies';
 import { DefaultLayout } from '~/layouts/DefaultLayout';
@@ -129,9 +129,9 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
             Tasks
           </Text>
           <Box css={{ display: 'flex' }}>
-            <Box css={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: 24, mr: 24 }}>
+            <Box css={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, mr: 24 }}>
               {filteredBosses?.map((boss) => (
-                <TaskCard
+                <TasksCard
                   {...boss}
                   description={boss?.mesos && `${boss?.mesos?.toLocaleString()} mesos`}
                   key={boss.id}
@@ -142,19 +142,19 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
               css={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gridGap: 24,
+                gap: 24,
                 alignContent: 'start',
                 alignItems: 'start',
                 mr: 24,
               }}
             >
               {filteredTasks?.map((task) => (
-                <TaskCard {...task} key={task.id} />
+                <TasksCard {...task} key={task.id} />
               ))}
             </Box>
-            <Box css={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: 24, mr: 24 }}>
+            <Box css={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, mr: 24 }}>
               {filteredEvents?.map((event) => (
-                <TaskCard {...event} key={event.id} />
+                <TasksCard {...event} key={event.id} />
               ))}
             </Box>
           </Box>
