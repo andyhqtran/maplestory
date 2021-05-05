@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { Box } from '~/components/Box';
+import { Box } from '~/components/Primitives/Box';
 import { Navigation } from '~/components/Navigation/Navigation';
 import { Sidebar } from '~/components/Sidebar';
 import { useSettings } from '~/hooks/useSettings';

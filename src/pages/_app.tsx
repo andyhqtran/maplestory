@@ -7,7 +7,7 @@ import type { AppProps } from 'next/app';
 import React, { ReactNode } from 'react';
 import { ToastProvider } from 'react-toast-notifications';
 
-import { Toast } from '~/components/Toast';
+import { Toast } from '~/components/Primitives/Toast';
 import { darkTheme } from '~/stitches.config';
 
 type MyAppProps = AppProps & {

@@ -2,7 +2,7 @@ import VisuallyHidden from '@reach/visually-hidden';
 import { useTheme } from 'next-themes';
 import React from 'react';
 
-import { Box } from '~/components/Box';
+import { Box } from '~/components/Primitives/Box';
 import {
   ArrowToLeftIcon,
   ArrowToRightIcon,
@@ -11,9 +11,9 @@ import {
   MoonIcon,
   MusicIcon,
   SunIcon,
-} from '~/components/Icon';
-import { IconButton } from '~/components/IconButton';
-import { Logo } from '~/components/Logo';
+} from '~/components/Primitives/Icon';
+import { IconButton } from '~/components/Primitives/IconButton';
+import { Logo } from '~/components/Primitives/Logo';
 import { NavigationItem } from '~/components/Navigation/NavigationItem';
 import { Routes } from '~/constants/routes';
 import { useSettings } from '~/hooks/useSettings';

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Countdown from 'react-countdown';
 
-import { Box, BoxProps } from '~/components/Box';
-import { TimerIcon } from '~/components/Icon';
-import { Text } from '~/components/Text';
+import { Box, BoxProps } from '~/components/Primitives/Box';
+import { TimerIcon } from '~/components/Primitives/Icon';
+import { Text } from '~/components/Primitives/Text';
 import { useServerResetTime } from '~/hooks/useServerResetTime';
 
 export type CountdownBannerProps = BoxProps;

@@ -1,12 +1,12 @@
 import Dialog, { DialogOverlay } from '@reach/dialog';
 import React, { useState } from 'react';
 
-import { Box } from '~/components/Box';
+import { Box } from '~/components/Primitives/Box';
 import { CharacterListItem } from '~/components/CharacterList/CharacterListItem';
 import { CreateCharacterForm } from '~/components/Form/CreateCharacterForm';
-import { PlusIcon } from '~/components/Icon';
-import { IconButton } from '~/components/IconButton';
-import { Text } from '~/components/Text';
+import { PlusIcon } from '~/components/Primitives/Icon';
+import { IconButton } from '~/components/Primitives/IconButton';
+import { Text } from '~/components/Primitives/Text';
 import { useCharacters } from '~/hooks/useCharacters';
 
 export const CharacterList = () => {

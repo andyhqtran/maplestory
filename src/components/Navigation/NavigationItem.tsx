@@ -3,9 +3,9 @@ import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 import React, { FunctionComponent } from 'react';
 
-import { Box } from '~/components/Box';
-import { IconProps } from '~/components/Icon';
-import { IconButton } from '~/components/IconButton';
+import { Box } from '~/components/Primitives/Box';
+import { IconProps } from '~/components/Primitives/Icon';
+import { IconButton } from '~/components/Primitives/IconButton';
 
 export type NavigationItemProps = Pick<LinkProps, 'href'> & {
   icon: FunctionComponent<IconProps>;

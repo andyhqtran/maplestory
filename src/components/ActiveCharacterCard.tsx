@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Box } from '~/components/Box';
-import { Card, CardProps } from '~/components/Card';
-import { Text } from '~/components/Text';
+import { Box } from '~/components/Primitives/Box';
+import { Card, CardProps } from '~/components/Primitives/Card';
+import { Text } from '~/components/Primitives/Text';
 import { MSClass } from '~/constants/maplestory';
 import { useCharacters } from '~/hooks/useCharacters';
 

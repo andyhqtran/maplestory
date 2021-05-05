@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import React, { ReactNode } from 'react';
-import { Box } from '~/components/Box';
-import { Button, ButtonProps } from '~/components/Button';
+import { Box } from '~/components/Primitives/Box';
+import { Button, ButtonProps } from '~/components/Primitives/Button';
 
-import { Card, CardProps } from '~/components/Card';
-import { Text } from '~/components/Text';
+import { Card, CardProps } from '~/components/Primitives/Card';
+import { Text } from '~/components/Primitives/Text';
 import { Boss, Event, Task } from '~/types/graphcms';
 
 export type TaskCardProps = Omit<ButtonProps, 'size'> & {

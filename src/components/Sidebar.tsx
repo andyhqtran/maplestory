@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, BoxProps } from '~/components/Box';
+import { Box, BoxProps } from '~/components/Primitives/Box';
 
 type SidebarProps = BoxProps;
 

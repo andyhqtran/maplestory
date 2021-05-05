@@ -3,8 +3,8 @@ import { noop } from 'lodash';
 import React from 'react';
 import { useToasts } from 'react-toast-notifications';
 
-import { Button } from '~/components/Button';
-import { Input } from '~/components/Input';
+import { Button } from '~/components/Primitives/Button';
+import { Input } from '~/components/Primitives/Input';
 import { MSClass } from '~/constants/maplestory';
 import { useCharacters } from '~/hooks/useCharacters';
 

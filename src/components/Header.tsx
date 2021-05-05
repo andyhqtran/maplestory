@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Box, BoxProps } from '~/components/Box';
-import { Container } from '~/components/Container';
+import { Box, BoxProps } from '~/components/Primitives/Box';
+import { Container } from '~/components/Primitives/Container';
 
 export type HeaderProps = BoxProps;
 

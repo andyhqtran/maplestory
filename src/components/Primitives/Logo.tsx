@@ -2,7 +2,7 @@ import VisuallyHidden from '@reach/visually-hidden';
 import Link from 'next/link';
 import React from 'react';
 
-import { Box, BoxProps } from '~/components/Box';
+import { Box, BoxProps } from '~/components/Primitives/Box';
 
 export type LogoProps = BoxProps;
 

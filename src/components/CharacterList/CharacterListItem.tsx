@@ -1,10 +1,10 @@
 import { Menu, MenuButton, MenuButtonProps, MenuItem, MenuList } from '@reach/menu-button';
 import React, { FunctionComponent } from 'react';
 
-import { Button, ButtonProps } from '~/components/Button';
-import { DotsVerticalIcon } from '~/components/Icon';
-import { IconButton } from '~/components/IconButton';
-import { Text } from '~/components/Text';
+import { Button, ButtonProps } from '~/components/Primitives/Button';
+import { DotsVerticalIcon } from '~/components/Primitives/Icon';
+import { IconButton } from '~/components/Primitives/IconButton';
+import { Text } from '~/components/Primitives/Text';
 
 export type CharacterListItemProps = ButtonProps & {
   id: string;

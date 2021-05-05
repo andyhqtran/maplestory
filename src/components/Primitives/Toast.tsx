@@ -2,9 +2,9 @@ import { noop } from 'lodash';
 import React from 'react';
 import { ToastProps as ReactToastProps } from 'react-toast-notifications';
 
-import { Box, BoxProps } from '~/components/Box';
-import { IconButton } from '~/components/IconButton';
-import { Text } from '~/components/Text';
+import { Box, BoxProps } from '~/components/Primitives/Box';
+import { IconButton } from '~/components/Primitives/IconButton';
+import { Text } from '~/components/Primitives/Text';
 import { XIcon } from './Icon';
 
 export type ToastProps = Pick<ReactToastProps, 'onDismiss'> & BoxProps;
