@@ -3,7 +3,6 @@ import React, { ReactNode } from 'react';
 import { Box } from '~/components/Primitives/Box';
 import { Button, ButtonProps } from '~/components/Primitives/Button';
 
-import { Card, CardProps } from '~/components/Primitives/Card';
 import { Text } from '~/components/Primitives/Text';
 import { Boss, Event, Task } from '~/types/graphcms';
 
@@ -17,7 +16,7 @@ export type TasksCardProps = Omit<ButtonProps, 'size'> & {
   name: Boss['name'] | Event['name'] | Task['name'];
 };
 
-export const TasksCard = ({ css, description, id, image, isSelected, name, ...restOfProps }: TaskCardProps) => {
+export const TasksCard = ({ css, description, id, image, isSelected, name, ...restOfProps }: TasksCardProps) => {
   return (
     <Button
       css={{
