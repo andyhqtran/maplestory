@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box, BoxProps } from '~/components/Primitives/Box';
 
 import { Button, ButtonProps } from '~/components/Primitives/Button';
 import { DotsVerticalIcon, PencilIcon, TrashIcon } from '~/components/Primitives/Icon';
@@ -6,25 +7,35 @@ import { IconButton } from '~/components/Primitives/IconButton';
 import { Menu } from '~/components/Primitives/Menu/Menu';
 import { Text } from '~/components/Primitives/Text';
 
-export type CharacterListItemProps = ButtonProps & {
-  id: string;
-  isSelected?: boolean;
-  name: string;
-  onDelete: () => void;
-};
+export type CharacterListItemProps = BoxProps &
+  Pick<ButtonProps, 'onClick'> & {
+    id: string;
+    isSelected?: boolean;
+    name: string;
+    onDelete: () => void;
+  };
 
-export const CharacterListItem = ({ css, id, isSelected, name, onDelete, ...restOfProps }: CharacterListItemProps) => {
+export const CharacterListItem = ({
+  css,
+  id,
+  isSelected,
+  name,
+  onClick,
+  onDelete,
+  ...restOfProps
+}: CharacterListItemProps) => {
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
 
   return (
-    <Button
+    <Box
       css={{
+        position: 'relative',
         backgroundColor: isSelected || isMenuExpanded ? '$gray100' : 'transparent',
         justifyContent: 'space-between',
         width: 'calc(100% + 24px)',
         height: 32,
         border: 0,
-        px: 12,
+        borderRadius: 4,
         mb: 8,
         ml: -12,
         color: isSelected || isMenuExpanded ? '$gray800' : '$gray600',
@@ -33,22 +44,41 @@ export const CharacterListItem = ({ css, id, isSelected, name, onDelete, ...rest
           backgroundColor: '$gray100',
           color: '$gray800',
 
+          [`& ${Button}`]: {
+            pr: 36,
+          },
+
           [`& ${IconButton}`]: {
             opacity: 1,
           },
-        },
-
-        '&:focus-visible': {
-          boxShadow: '0 0 0 2px $colors$blue800',
         },
 
         ...(css as {}),
       }}
       {...restOfProps}
     >
-      <Text css={{ color: 'inherit' }} size='body-14'>
-        {name}
-      </Text>
+      <Button
+        css={{
+          justifyContent: 'flex-start',
+          backgroundColor: 'transparent',
+          width: '100%',
+          border: 0,
+          pr: isMenuExpanded ? 36 : 12,
+          pl: 12,
+
+          '&:hover': {
+            backgroundColor: 'transparent',
+          },
+        }}
+        onClick={onClick}
+      >
+        <Text
+          css={{ color: 'inherit', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+          size='body-14'
+        >
+          {name}
+        </Text>
+      </Button>
       <Menu
         items={[
           {
@@ -64,11 +94,29 @@ export const CharacterListItem = ({ css, id, isSelected, name, onDelete, ...rest
         ]}
         onChange={(isExpanded) => setIsMenuExpanded(isExpanded)}
         trigger={
-          <IconButton css={{ mr: -4, opacity: isMenuExpanded ? 1 : 0 }} size='tiny'>
+          <IconButton
+            css={{
+              position: 'absolute',
+              top: '50%',
+              right: 12,
+              mr: -4,
+              opacity: isMenuExpanded ? 1 : 0,
+              transform: 'translateY(-50%)',
+
+              '&:focus-visible': {
+                opacity: 1,
+
+                [`~ ${Button}`]: {
+                  pr: 36,
+                },
+              },
+            }}
+            size='tiny'
+          >
             <DotsVerticalIcon size='tiny' />
           </IconButton>
         }
       />
-    </Button>
+    </Box>
   );
 };
