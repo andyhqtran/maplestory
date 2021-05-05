@@ -72,10 +72,7 @@ export const CharacterListItem = ({
         }}
         onClick={onClick}
       >
-        <Text
-          css={{ color: 'inherit', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
-          size='body-14'
-        >
+        <Text css={{ color: 'inherit', ellipsis: 'truncate' }} size='body-14'>
           {name}
         </Text>
       </Button>

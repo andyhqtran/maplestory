@@ -91,6 +91,11 @@ export const stitchesConfig = createCss({
       paddingTop: value,
       paddingBottom: value,
     }),
+    ellipsis: () => (value) => ({
+      whiteSpace: value === 'truncate' ? 'nowrap' : 'normal',
+      overflow: value === 'truncate' ? 'hidden' : 'visible',
+      textOverflow: value === 'truncate' ? 'ellipsis' : 'clip',
+    }),
   },
 });
 
