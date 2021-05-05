@@ -1,4 +1,3 @@
-import Dialog, { DialogOverlay } from '@reach/dialog';
 import React, { useState } from 'react';
 
 import { Box } from '~/components/Primitives/Box';
@@ -8,6 +7,7 @@ import { PlusIcon } from '~/components/Primitives/Icon';
 import { IconButton } from '~/components/Primitives/IconButton';
 import { Text } from '~/components/Primitives/Text';
 import { useCharacters } from '~/hooks/useCharacters';
+import { Dialog } from '~/components/Primitives/Dialog/Dialog';
 
 export const CharacterList = () => {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
@@ -39,14 +39,9 @@ export const CharacterList = () => {
         );
       })}
 
-      <DialogOverlay isOpen={isDialogOpened}>
-        <Dialog aria-label='Character creation' onDismiss={() => setIsDialogOpened(false)}>
-          <Text as='h1' css={{ mb: 12 }} size='heading-20'>
-            Character creation
-          </Text>
-          <CreateCharacterForm onSubmit={() => setIsDialogOpened(false)} />
-        </Dialog>
-      </DialogOverlay>
+      <Dialog isOpen={isDialogOpened} onDismiss={() => setIsDialogOpened(false)} title='Character creation'>
+        <CreateCharacterForm onSubmit={() => setIsDialogOpened(false)} />
+      </Dialog>
     </Box>
   );
 };

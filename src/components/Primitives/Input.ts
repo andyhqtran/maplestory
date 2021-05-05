@@ -11,6 +11,7 @@ export const Input = styled('input', {
   p: 0,
   fontFamily: '$inter',
   fontWeight: '$regular',
+  boxSizing: 'border-box',
 
   '&:focus': {
     boxShadow: '0 0 0 2px $colors$blue800',

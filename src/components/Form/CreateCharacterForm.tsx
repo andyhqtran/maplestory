@@ -1,3 +1,4 @@
+import VisuallyHidden from '@reach/visually-hidden';
 import { Field, Form, Formik, FormikConfig } from 'formik';
 import { noop } from 'lodash';
 import React from 'react';
@@ -5,6 +6,7 @@ import { useToasts } from 'react-toast-notifications';
 
 import { Button } from '~/components/Primitives/Button';
 import { Input } from '~/components/Primitives/Input';
+import { Text } from '~/components/Primitives/Text';
 import { MSClass } from '~/constants/maplestory';
 import { useCharacters } from '~/hooks/useCharacters';
 
@@ -38,15 +40,29 @@ export const CreateCharacterForm = ({ onSubmit = noop }: CreateCharacterFormProp
       }}
     >
       <Form>
-        <Field as={Input} css={{ mb: 12 }} name='name' placeholder='Name' required />
-        <Field as='select' name='class' required>
+        <VisuallyHidden>
+          <Text as='label' htmlFor='character-name' size='body-12'>
+            Character name
+          </Text>
+        </VisuallyHidden>
+        <Field as={Input} css={{ width: '100%', mb: 12 }} id='character-name' name='name' placeholder='Name' required />
+
+        <VisuallyHidden>
+          <Text as='label' htmlFor='character-class' size='body-12'>
+            Character class
+          </Text>
+        </VisuallyHidden>
+        <Field as='select' id='character-class' name='class' required>
           {Object.keys(MSClass).map((key) => {
             const value = MSClass[key as keyof typeof MSClass];
 
             return <option value={key}>{value}</option>;
           })}
         </Field>
-        <Button type='submit'>Create</Button>
+
+        <Button css={{ mt: 12 }} type='submit'>
+          Create
+        </Button>
       </Form>
     </Formik>
   );

@@ -24,6 +24,7 @@ export const stitchesConfig = createCss({
       gray600: 'hsla(0deg, 0%, 0%, 0.64)',
       gray700: 'hsla(0deg, 0%, 0%, 0.84)',
       gray800: 'hsla(0deg, 0%, 0%, 1)',
+      overlay: 'hsla(0deg, 0%, 100%, 0.96)',
       white: 'hsl(0deg, 0%, 100%)',
     },
     fonts: {
@@ -112,17 +113,6 @@ export const globalStyles = global({
   '#__next': {
     height: '100%',
   },
-
-  '[data-reach-dialog-overlay]': {
-    zIndex: 9999,
-  },
-
-  '[data-reach-dialog-content]': {
-    backgroundColor: '$background',
-    border: '1px solid $colors$gray200',
-    borderRadius: 4,
-    boxShadow: '0 2px 8px $colors$gray100',
-  },
 });
 
 export const darkTheme = theme('dark-theme', {
@@ -145,6 +135,7 @@ export const darkTheme = theme('dark-theme', {
     gray600: 'hsla(0deg, 0%, 100%, 0.64)',
     gray700: 'hsla(0deg, 0%, 100%, 0.84)',
     gray800: 'hsla(0deg, 0%, 100%, 1)',
+    overlay: 'hsla(213deg, 22%, 8%, 0.96)',
     white: 'hsl(0deg, 0%, 100%)',
   },
 });
