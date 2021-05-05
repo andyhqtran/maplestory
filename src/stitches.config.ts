@@ -113,33 +113,6 @@ export const globalStyles = global({
     height: '100%',
   },
 
-  '[data-reach-menu-list]': {
-    backgroundColor: '$background',
-    minWidth: 160,
-    py: 8,
-    border: '1px solid $colors$gray200',
-    borderRadius: 4,
-    boxShadow: '0 2px 8px $colors$gray100',
-  },
-
-  '[data-reach-menu-item]': {
-    display: 'flex',
-    alignItems: 'center',
-    height: 32,
-    p: 0,
-    px: 16,
-    color: '$gray800',
-    letterSpacing: 0,
-    fontFamily: '$inter',
-    fontSize: 14,
-    fontWeight: '$regular',
-    lineHeight: '22px',
-
-    '&:hover': {
-      backgroundColor: '$gray100',
-    },
-  },
-
   '[data-reach-dialog-overlay]': {
     zIndex: 9999,
   },
