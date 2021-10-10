@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Box } from '~/components/Primitives/Box';
 import { Card, CardProps } from '~/components/Primitives/Card';
 import { Text } from '~/components/Primitives/Text';

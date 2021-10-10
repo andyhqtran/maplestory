@@ -1,5 +1,5 @@
 import { Menu as ReachMenu, MenuButton as ReachMenuButton } from '@reach/menu-button';
-import React, { cloneElement, ReactElement, ReactNode } from 'react';
+import { cloneElement, ReactElement, ReactNode } from 'react';
 import { Box } from '~/components/Primitives/Box';
 
 import { MenuItem, MenuItemProps } from '~/components/Primitives/Menu/MenuItem';

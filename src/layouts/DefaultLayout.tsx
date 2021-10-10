@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { Box } from '~/components/Primitives/Box';
-import { Navigation } from '~/components/Navigation/Navigation';
-import { Sidebar } from '~/components/Sidebar';
+import { Navigation } from '~/components/Navigation';
 import { useSettings } from '~/hooks/useSettings';
 import { globalStyles } from '~/stitches.config';
+import { Sidebar } from '~/components/Primitives/Sidebar';
 
 export type DefaultLayoutProps = {
   children: ReactNode;

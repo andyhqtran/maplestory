@@ -1,6 +1,6 @@
 import { gql, request } from 'graphql-request';
 import { InferGetStaticPropsType } from 'next';
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useEffectOnce } from 'react-use';
 
 import { ActiveCharacterCard } from '~/components/ActiveCharacterCard';

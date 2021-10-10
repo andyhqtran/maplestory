@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import { useState } from 'react';
 import { Box } from '~/components/Primitives/Box';
 import { CharacterListItem } from '~/components/CharacterList/CharacterListItem';
 import { CreateCharacterForm } from '~/components/Form/CreateCharacterForm';

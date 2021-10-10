@@ -1,6 +1,5 @@
 import { Field, Form, Formik, FormikConfig } from 'formik';
 import { noop } from 'lodash';
-import React from 'react';
 import { useToasts } from 'react-toast-notifications';
 
 import { Button } from '~/components/Primitives/Button';

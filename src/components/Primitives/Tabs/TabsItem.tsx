@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, ButtonProps } from '~/components/Primitives/Button';
 
 export type TabsItemProps = ButtonProps & {

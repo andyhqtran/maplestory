@@ -1,8 +1,8 @@
-import createCss, { StitchesCss } from '@stitches/react';
+import { createStitches } from '@stitches/react';
 
-export * from '@stitches/react';
+import type * as Stitches from '@stitches/react';
 
-export const stitchesConfig = createCss({
+export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme, config } = createStitches({
   prefix: '',
   theme: {
     colors: {
@@ -26,6 +26,7 @@ export const stitchesConfig = createCss({
       gray800: 'hsla(0deg, 0%, 0%, 1)',
       overlay: 'hsla(0deg, 0%, 100%, 0.96)',
       white: 'hsl(0deg, 0%, 100%)',
+      focus: 'hsla(216deg, 77%, 45%, 1)',
     },
     fonts: {
       inter: 'Inter, -apple-system, system-ui, sans-serif',
@@ -39,59 +40,53 @@ export const stitchesConfig = createCss({
     },
   },
   utils: {
-    m: () => (value) => ({
-      marginTop: value,
-      marginBottom: value,
-      marginLeft: value,
-      marginRight: value,
+    p: (value: Stitches.PropertyValue<'padding'>) => ({
+      padding: value,
     }),
-    mt: () => (value) => ({
-      marginTop: value,
-    }),
-    mr: () => (value) => ({
-      marginRight: value,
-    }),
-    mb: () => (value) => ({
-      marginBottom: value,
-    }),
-    ml: () => (value) => ({
-      marginLeft: value,
-    }),
-    mx: () => (value) => ({
-      marginLeft: value,
-      marginRight: value,
-    }),
-    my: () => (value) => ({
-      marginTop: value,
-      marginBottom: value,
-    }),
-    p: () => (value) => ({
+    pt: (value: Stitches.PropertyValue<'paddingTop'>) => ({
       paddingTop: value,
+    }),
+    pr: (value: Stitches.PropertyValue<'paddingTop'>) => ({
+      paddingRight: value,
+    }),
+    pb: (value: Stitches.PropertyValue<'paddingBottom'>) => ({
       paddingBottom: value,
+    }),
+    pl: (value: Stitches.PropertyValue<'paddingLeft'>) => ({
+      paddingLeft: value,
+    }),
+    px: (value: Stitches.PropertyValue<'paddingLeft'>) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    pt: () => (value) => ({
-      paddingTop: value,
-    }),
-    pr: () => (value) => ({
-      paddingRight: value,
-    }),
-    pb: () => (value) => ({
-      paddingBottom: value,
-    }),
-    pl: () => (value) => ({
-      paddingLeft: value,
-    }),
-    px: () => (value) => ({
-      paddingLeft: value,
-      paddingRight: value,
-    }),
-    py: () => (value) => ({
+    py: (value: Stitches.PropertyValue<'paddingTop'>) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
-    ellipsis: () => (value) => ({
+    m: (value: Stitches.PropertyValue<'margin'>) => ({
+      margin: value,
+    }),
+    mt: (value: Stitches.PropertyValue<'marginTop'>) => ({
+      marginTop: value,
+    }),
+    mr: (value: Stitches.PropertyValue<'marginRight'>) => ({
+      marginRight: value,
+    }),
+    mb: (value: Stitches.PropertyValue<'marginBottom'>) => ({
+      marginBottom: value,
+    }),
+    ml: (value: Stitches.PropertyValue<'marginLeft'>) => ({
+      marginLeft: value,
+    }),
+    mx: (value: Stitches.PropertyValue<'marginLeft'>) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+    my: (value: Stitches.PropertyValue<'marginTop'>) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+    ellipsis: (value: 'default' | 'truncate') => ({
       whiteSpace: value === 'truncate' ? 'nowrap' : 'normal',
       overflow: value === 'truncate' ? 'hidden' : 'visible',
       textOverflow: value === 'truncate' ? 'ellipsis' : 'clip',
@@ -99,11 +94,11 @@ export const stitchesConfig = createCss({
   },
 });
 
-export type CSS = StitchesCss<typeof stitchesConfig>;
+export type CSS = Stitches.CSS<typeof config>;
 
-export const { css, styled, global, theme, keyframes, getCssString } = stitchesConfig;
+export type { VariantProps } from '@stitches/react';
 
-export const globalStyles = global({
+export const globalStyles = globalCss({
   html: {
     height: '100%',
   },
@@ -120,7 +115,7 @@ export const globalStyles = global({
   },
 });
 
-export const darkTheme = theme('dark-theme', {
+export const darkTheme = createTheme('dark-theme', {
   colors: {
     background: 'hsla(213deg, 22%, 8%, 1)',
     black: 'hsl(0deg, 0%, 0%)',

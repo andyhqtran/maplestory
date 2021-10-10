@@ -1,34 +1,18 @@
-import VisuallyHidden from '@reach/visually-hidden';
 import Link from 'next/link';
-import React from 'react';
+import { StyledLogo, StyledLogoProps } from '~/components/Primitives/Logo.styles';
+import { Text } from '~/components/Primitives/Text';
+import { VisuallyHidden } from '~/components/VisuallyHidden';
+import { Routes } from '~/constants/routes';
 
-import { Box, BoxProps } from '~/components/Primitives/Box';
-
-export type LogoProps = BoxProps;
+export type LogoProps = Pick<StyledLogoProps, 'css'>;
 
 export const Logo = ({ css }: LogoProps) => {
   return (
-    <Link href='/' passHref>
-      <Box
-        as='a'
-        css={{
-          display: 'block',
-          backgroundColor: '$gray100',
-          width: 40,
-          height: 40,
-          borderRadius: 20,
-          cursor: 'pointer',
-
-          '&:hover': {
-            backgroundColor: '$gray200',
-          },
-
-          ...(css as {}),
-        }}
-      >
-        <VisuallyHidden>MapleStory Tracker</VisuallyHidden>
-        {/** @todo Add logo by @drawwithkristi */}
-      </Box>
+    <Link href={Routes.Root} passHref>
+      <StyledLogo css={css}>
+        <Text size='heading-14-uppercase'>H</Text>
+        <VisuallyHidden>Henesys.gg</VisuallyHidden>
+      </StyledLogo>
     </Link>
   );
 };

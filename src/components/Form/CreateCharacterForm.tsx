@@ -1,12 +1,10 @@
-import VisuallyHidden from '@reach/visually-hidden';
-import { Field, Form, Formik, FormikConfig } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import { noop } from 'lodash';
-import React from 'react';
 import { useToasts } from 'react-toast-notifications';
-
 import { Button } from '~/components/Primitives/Button';
 import { Input } from '~/components/Primitives/Input';
 import { Text } from '~/components/Primitives/Text';
+import { VisuallyHidden } from '~/components/VisuallyHidden';
 import { MSClass } from '~/constants/maplestory';
 import { useCharacters } from '~/hooks/useCharacters';
 

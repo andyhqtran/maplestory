@@ -3,5 +3,7 @@ export enum Routes {
   Characters = '/characters',
   Music = '/music',
   Root = '/',
+  Tools = '/tools',
   Tracker = '/',
+  VerusHillaTimer = '/tools/verus-hilla-timer',
 }

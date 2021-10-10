@@ -1,7 +1,7 @@
 import { DefaultLayout } from '~/layouts/DefaultLayout';
 
-export default function MusicPage() {
+export default function ToolsPage() {
   return <>Coming soon</>;
 }
 
-MusicPage.layout = DefaultLayout;
+ToolsPage.layout = DefaultLayout;

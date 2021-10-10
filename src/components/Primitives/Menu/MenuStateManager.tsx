@@ -1,5 +1,5 @@
 import { isUndefined } from 'lodash';
-import React, { ReactElement, ReactNode, useEffect } from 'react';
+import { ReactElement, ReactNode, useEffect } from 'react';
 import { usePrevious } from 'react-use';
 
 interface MenuStateManagerProps {

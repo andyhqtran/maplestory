@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Countdown from 'react-countdown';
 
 import { Box, BoxProps } from '~/components/Primitives/Box';

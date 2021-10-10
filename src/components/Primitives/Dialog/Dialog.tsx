@@ -1,12 +1,10 @@
-import VisuallyHidden from '@reach/visually-hidden';
-import React from 'react';
 import { Box } from '~/components/Primitives/Box';
 import { DialogContent } from '~/components/Primitives/Dialog/DialogContent';
-
 import { DialogOverlay, DialogOverlayProps } from '~/components/Primitives/Dialog/DialogOverlay';
 import { XIcon } from '~/components/Primitives/Icon';
 import { IconButton } from '~/components/Primitives/IconButton';
 import { Text } from '~/components/Primitives/Text';
+import { VisuallyHidden } from '~/components/VisuallyHidden';
 
 export type DialogProps = Pick<DialogOverlayProps, 'children' | 'isOpen' | 'onDismiss' | 'title'> & {
   title: string;

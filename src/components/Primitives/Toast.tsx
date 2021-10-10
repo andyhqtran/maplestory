@@ -1,5 +1,4 @@
 import { noop } from 'lodash';
-import React from 'react';
 import { ToastProps as ReactToastProps } from 'react-toast-notifications';
 
 import { Box, BoxProps } from '~/components/Primitives/Box';

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Box } from '~/components/Primitives/Box';
 import { Button, ButtonProps } from '~/components/Primitives/Button';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, BoxProps } from '~/components/Primitives/Box';
 
 import { Button, ButtonProps } from '~/components/Primitives/Button';

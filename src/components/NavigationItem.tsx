@@ -1,11 +1,10 @@
-import VisuallyHidden from '@reach/visually-hidden';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
-import React, { FunctionComponent } from 'react';
-
+import { FunctionComponent } from 'react';
 import { Box } from '~/components/Primitives/Box';
 import { IconProps } from '~/components/Primitives/Icon';
 import { IconButton } from '~/components/Primitives/IconButton';
+import { VisuallyHidden } from '~/components/VisuallyHidden';
 
 export type NavigationItemProps = Pick<LinkProps, 'href'> & {
   icon: FunctionComponent<IconProps>;

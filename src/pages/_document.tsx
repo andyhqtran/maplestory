@@ -1,6 +1,6 @@
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
 
-import { getCssString } from '~/stitches.config';
+import { getCssText } from '~/stitches.config';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
         styles: (
           <>
             {initialProps.styles}
-            <style id='stitches' dangerouslySetInnerHTML={{ __html: getCssString() }} />
+            <style id='stitches' dangerouslySetInnerHTML={{ __html: getCssText() }} />
           </>
         ),
       };
