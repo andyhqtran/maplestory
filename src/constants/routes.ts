@@ -5,5 +5,5 @@ export enum Routes {
   Root = '/',
   Tools = '/tools',
   Tracker = '/',
-  VerusHillaTimer = '/tools/verus-hilla-timer',
+  VerusHilla = '/tools/verus-hilla',
 }

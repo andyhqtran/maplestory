@@ -1,39 +1,25 @@
 import Link, { LinkProps } from 'next/link';
-import { useRouter } from 'next/router';
-import { FunctionComponent } from 'react';
-import { Box } from '~/components/Primitives/Box';
-import { IconProps } from '~/components/Primitives/Icon';
-import { IconButton } from '~/components/Primitives/IconButton';
-import { VisuallyHidden } from '~/components/VisuallyHidden';
+import { ReactNode } from 'react';
+import { StyledNavigationItem, StyledNavigationItemAdornment } from '~/components/NavigationItem.styles';
+import { Text } from '~/components/Primitives/Text';
 
 export type NavigationItemProps = Pick<LinkProps, 'href'> & {
-  icon: FunctionComponent<IconProps>;
+  adornmentLeft?: ReactNode;
+  adornmentRight?: ReactNode;
   label: string;
 };
 
-export const NavigationItem = ({ href = '/', icon, label }: NavigationItemProps) => {
-  const router = useRouter();
-  const isActiveRoute = router.asPath === href;
-
+export const NavigationItem = ({ adornmentLeft, adornmentRight, href = '/', label }: NavigationItemProps) => {
   return (
     <Link href={href} passHref>
-      <IconButton
-        as='a'
-        css={{
-          borderRadius: 4,
-          color: isActiveRoute ? '$gray800' : '$gray600',
-          mb: 8,
-          transition: 'color 0.2s ease',
+      <StyledNavigationItem>
+        {adornmentLeft && <StyledNavigationItemAdornment>{adornmentLeft}</StyledNavigationItemAdornment>}
 
-          '&:last-child': {
-            mb: 0,
-          },
-        }}
-        size='small'
-      >
-        <VisuallyHidden>{label}</VisuallyHidden>
-        <Box as={icon} size='small' />
-      </IconButton>
+        <Text css={{ flexGrow: 1, marginX: 8, color: 'inherit', fontWeight: 'inherit' }} size='body-14'>
+          {label}
+        </Text>
+        {adornmentRight && <StyledNavigationItemAdornment>{adornmentRight}</StyledNavigationItemAdornment>}
+      </StyledNavigationItem>
     </Link>
   );
 };

@@ -29,7 +29,7 @@ export const IconButton = styled('button', {
 
   '&:focus-visible': {
     borderColor: 'transparent',
-    boxShadow: '0 0 0 2px $colors$blue800',
+    boxShadow: '0 0 0 2px $colors$focus',
     color: '$gray800',
   },
 

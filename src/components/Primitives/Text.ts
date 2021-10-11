@@ -97,6 +97,12 @@ export const Text = styled('span', {
         letterSpacing: 0.1,
         lineHeight: '28px',
       },
+      'body-16': {
+        fontSize: 16,
+        letterSpacing: 0,
+        fontWeight: '$regular',
+        lineHeight: '24px',
+      },
       'body-14': {
         fontSize: 14,
         letterSpacing: 0,
@@ -113,6 +119,6 @@ export const Text = styled('span', {
   },
 
   defaultVariants: {
-    size: 'body-18',
+    size: 'body-16',
   },
 });

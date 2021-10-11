@@ -26,7 +26,7 @@ export const Button = styled('button', {
   },
 
   '&:focus-visible': {
-    boxShadow: '0 0 0 2px $colors$blue800',
+    boxShadow: '0 0 0 2px $colors$focus',
   },
 
   variants: {

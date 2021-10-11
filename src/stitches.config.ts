@@ -8,14 +8,14 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
     colors: {
       background: 'hsla(0deg, 0%, 100%, 1)',
       black: 'hsl(0deg, 0%, 0%)',
-      blue100: 'hsla(216deg, 77%, 45%, 0.04)',
-      blue200: 'hsla(216deg, 77%, 45%, 0.08)',
-      blue300: 'hsla(216deg, 77%, 45%, 0.16)',
-      blue400: 'hsla(216deg, 77%, 45%, 0.24)',
-      blue500: 'hsla(216deg, 77%, 45%, 0.4)',
-      blue600: 'hsla(216deg, 77%, 45%, 0.64)',
-      blue700: 'hsla(216deg, 77%, 45%, 0.84)',
-      blue800: 'hsla(216deg, 77%, 45%, 1)',
+      primary100: 'hsla(216deg, 77%, 45%, 0.04)',
+      primary200: 'hsla(216deg, 77%, 45%, 0.08)',
+      primary300: 'hsla(216deg, 77%, 45%, 0.16)',
+      primary400: 'hsla(216deg, 77%, 45%, 0.24)',
+      primary500: 'hsla(216deg, 77%, 45%, 0.4)',
+      primary600: 'hsla(216deg, 77%, 45%, 0.64)',
+      primary700: 'hsla(216deg, 77%, 45%, 0.84)',
+      primary800: 'hsla(216deg, 77%, 45%, 1)',
       gray100: 'hsla(0deg, 0%, 0%, 0.04)',
       gray200: 'hsla(0deg, 0%, 0%, 0.08)',
       gray300: 'hsla(0deg, 0%, 0%, 0.16)',
@@ -63,6 +63,14 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       paddingTop: value,
       paddingBottom: value,
     }),
+    paddingX: (value: Stitches.PropertyValue<'paddingLeft'>) => ({
+      paddingLeft: value,
+      paddingRight: value,
+    }),
+    paddingY: (value: Stitches.PropertyValue<'paddingTop'>) => ({
+      paddingTop: value,
+      paddingBottom: value,
+    }),
     m: (value: Stitches.PropertyValue<'margin'>) => ({
       margin: value,
     }),
@@ -83,6 +91,14 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       marginRight: value,
     }),
     my: (value: Stitches.PropertyValue<'marginTop'>) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+    marginX: (value: Stitches.PropertyValue<'marginLeft'>) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+    marginY: (value: Stitches.PropertyValue<'marginTop'>) => ({
       marginTop: value,
       marginBottom: value,
     }),
@@ -112,6 +128,11 @@ export const globalStyles = globalCss({
 
   '#__next': {
     height: '100%',
+  },
+
+  '*': {
+    margin: 0,
+    boxSizing: 'border-box',
   },
 });
 

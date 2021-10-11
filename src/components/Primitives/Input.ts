@@ -14,7 +14,7 @@ export const Input = styled('input', {
   boxSizing: 'border-box',
 
   '&:focus': {
-    boxShadow: '0 0 0 2px $colors$blue800',
+    boxShadow: '0 0 0 2px $colors$focus',
   },
 
   variants: {

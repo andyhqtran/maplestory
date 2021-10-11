@@ -11,7 +11,7 @@ export const Anchor = styled('a', {
   cursor: 'pointer',
 
   '&:hover': {
-    color: '$blue800',
+    color: '$primary800',
   },
 
   '&:focus': {
@@ -19,7 +19,7 @@ export const Anchor = styled('a', {
   },
 
   '&:focus-visible': {
-    color: '$blue800',
-    boxShadow: '0 0 0 2px $colors$blue800',
+    color: '$primary800',
+    boxShadow: '0 0 0 2px $colors$focus',
   },
 });

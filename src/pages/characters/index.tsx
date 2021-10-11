@@ -3,7 +3,6 @@ import { InferGetStaticPropsType } from 'next';
 import { useMemo, useState } from 'react';
 import { useEffectOnce } from 'react-use';
 
-import { ActiveCharacterCard } from '~/components/ActiveCharacterCard';
 import { Box } from '~/components/Primitives/Box';
 import { CharacterList } from '~/components/CharacterList/CharacterList';
 import { Container } from '~/components/Primitives/Container';
@@ -95,7 +94,6 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
       sidebar={
         <>
           <CharacterList />
-          <ActiveCharacterCard />
         </>
       }
     >

@@ -1,3 +1,4 @@
+import { configure } from '@happykit/flags/config';
 import { IdProvider } from '@radix-ui/react-id';
 import { NextComponentType } from 'next';
 import { DefaultSeo } from 'next-seo';
@@ -8,6 +9,11 @@ import { ToastProvider } from 'react-toast-notifications';
 
 import { Toast } from '~/components/Primitives/Toast';
 import { darkTheme } from '~/stitches.config';
+
+/**
+ * Feature flag setup
+ */
+configure({ envKey: process.env.NEXT_PUBLIC_FLAGS_ENVIRONMENT_KEY! });
 
 type MyAppProps = AppProps & {
   Component: NextComponentType & { layout?: any };
