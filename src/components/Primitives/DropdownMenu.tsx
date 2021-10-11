@@ -37,9 +37,9 @@ export const DropdownMenu = ({
     <RadixDropdownMenu.Root>
       <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>
       <StyledDropdownMenuContent align={align} alignOffset={alignOffset} css={css} side={side} sideOffset={sideOffset}>
-        {items.map((item) => {
+        {items.map((item, index) => {
           return (
-            <StyledDropdownMenuItem onSelect={item.onSelect}>
+            <StyledDropdownMenuItem key={index} onSelect={item.onSelect}>
               {item.adornmentLeft && (
                 <StyledDropdownMenuItemAdornment>{item.adornmentLeft}</StyledDropdownMenuItemAdornment>
               )}

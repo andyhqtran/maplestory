@@ -7,6 +7,7 @@ type Character = {
   class: keyof typeof MSClass;
   id: number;
   name: string;
+  slug: string;
 };
 
 type Settings = {
@@ -31,7 +32,7 @@ class MapleStoryDatabase extends Dexie {
     super('MapleStoryDatabase');
 
     this.version(1).stores({
-      characters: '++id,name,avatar,class,classBranch',
+      characters: '++id,name,avatar,class,classBranch,slug',
       settings: 'name,status',
       tasks: '++id,name,recurrence,characterId,completedDate',
     });

@@ -1,3 +1,4 @@
+import slugify from 'slugify';
 import useSWR from 'swr';
 
 import { MSClass } from '~/constants/maplestory';
@@ -11,6 +12,7 @@ export const useCharacters = () => {
       avatar: values.avatar,
       class: values.class,
       name: values.name,
+      slug: slugify(values.name),
     });
 
     mutate();
@@ -27,6 +29,7 @@ export const useCharacters = () => {
       avatar: values.avatar,
       class: values.class,
       name: values.name,
+      slug: slugify(values.name),
     });
 
     mutate();

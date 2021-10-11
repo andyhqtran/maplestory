@@ -20,7 +20,7 @@ export const RouteTabs = ({ css, tabs }: RouteTabsProps) => {
         const isActiveTab = router.asPath === tab.href;
 
         return (
-          <Link href={tab.href} passHref>
+          <Link href={tab.href} key={tab.href} passHref>
             <StyledRouteTabsItem
               css={{
                 color: isActiveTab ? '$primary800' : undefined,

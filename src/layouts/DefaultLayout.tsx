@@ -10,10 +10,10 @@ import { CheckSquareIcon, CircleIcon, DotsVerticalIcon, WrenchIcon } from '~/com
 import { Logo } from '~/components/Primitives/Logo';
 import { Divider } from '~/components/Primitives/Divider';
 import { CharacterDropdownMenu } from '~/components/menus/CharacterDropdownMenu';
+import { CharacterNavigation } from '~/components/CharacterNavigation';
 
 export type DefaultLayoutProps = {
   children: ReactNode;
-  sidebar?: ReactNode;
 };
 
 export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
@@ -42,15 +42,7 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
           <>
             <Divider css={{ marginY: 24 }} />
 
-            <Navigation label='Characters'>
-              <NavigationItem
-                adornmentLeft={<CircleIcon size='micro' />}
-                adornmentRight={<CharacterDropdownMenu />}
-                href='/'
-                label='Buccaneer'
-              />
-              <NavigationItem adornmentLeft={<CircleIcon size='micro' />} href='/' label='Night Lord' />
-            </Navigation>
+            <CharacterNavigation />
           </>
         )}
       </Sidebar>

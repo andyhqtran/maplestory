@@ -4,7 +4,6 @@ import { useMemo, useState } from 'react';
 import { useEffectOnce } from 'react-use';
 
 import { Box } from '~/components/Primitives/Box';
-import { CharacterList } from '~/components/CharacterList/CharacterList';
 import { Container } from '~/components/Primitives/Container';
 import { CountdownBanner } from '~/components/CountdownBanner';
 import { Header } from '~/components/Header';
@@ -90,13 +89,7 @@ export default function HomePage({ bosses, events, tasks }: InferGetStaticPropsT
   }, [tasks, recurrence]);
 
   return (
-    <DefaultLayout
-      sidebar={
-        <>
-          <CharacterList />
-        </>
-      }
-    >
+    <DefaultLayout>
       <Header>
         <Text as='h1' css={{ mr: 8, color: '$gray800' }} size='heading-12-uppercase'>
           Tracker

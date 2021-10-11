@@ -3,19 +3,24 @@ import { DropdownMenu, DropdownMenuItem } from '~/components/Primitives/Dropdown
 import { DotsVerticalIcon, PencilIcon, TrashIcon } from '~/components/Primitives/Icon';
 import { IconButton } from '~/components/Primitives/IconButton';
 
-export const CharacterDropdownMenu = () => {
+export type CharacterDropdownMenuProps = {
+  onDelete: () => void;
+  onEdit: () => void;
+};
+
+export const CharacterDropdownMenu = ({ onDelete, onEdit }: CharacterDropdownMenuProps) => {
   const items: DropdownMenuItem[] = useMemo(() => {
     return [
       {
         adornmentLeft: <PencilIcon size='tiny' />,
         label: 'Edit',
-        onSelect: () => {},
+        onSelect: onEdit,
         type: 'item',
       },
       {
         adornmentLeft: <TrashIcon size='tiny' />,
         label: 'Delete',
-        onSelect: () => {},
+        onSelect: onDelete,
         type: 'item',
       },
     ];
