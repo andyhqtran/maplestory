@@ -18,7 +18,7 @@
     "@radix-ui/react-tabs": "^0.1.0",
     "@radix-ui/react-visually-hidden": "^0.1.0",
     "@stitches/react": "1.2.5",
-    "dexie": "^3.0.3",
+    "dexie": "^3.2.2",
     "formik": "^2.2.9",
     "graphql": "^15.6.1",
     "graphql-request": "^3.5.0",
